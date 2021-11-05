@@ -9,14 +9,21 @@
 #define OUTGOING_DATA_SIZE	1
 #define COMMS_TIMEOUT_2MS	2
 
+// Module specific enums
+typedef enum
+{
+	N64_NOPULL = 0,
+	N64_PULLUP
+} N64PullupState_t;
+
 // Private Variables
 static UART_HandleTypeDef huart1;
 
 // Initializer
 void CommsN64Console_Init(void);
 
-// RX
-//void CommsN64Console_ReceiveData(ExpansionPortChannel_t);
+// Setters
+void CommsN64Console_SetPullup(N64PullupState_t);
 
 // TX
 void CommsN64Console_SendData(uint8_t);
