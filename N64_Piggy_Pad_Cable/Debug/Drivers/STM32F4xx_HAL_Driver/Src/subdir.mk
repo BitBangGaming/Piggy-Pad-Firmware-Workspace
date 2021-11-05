@@ -16,7 +16,9 @@ C_SRCS += \
 ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c \
 ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c \
 ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c \
-../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c 
+../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c \
+../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c \
+../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_usart.c 
 
 OBJS += \
 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o \
@@ -31,7 +33,9 @@ OBJS += \
 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.o \
 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.o \
 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o \
-./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.o 
+./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.o \
+./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.o \
+./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_usart.o 
 
 C_DEPS += \
 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.d \
@@ -46,7 +50,9 @@ C_DEPS += \
 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.d \
 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.d \
 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.d \
-./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.d 
+./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.d \
+./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.d \
+./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_usart.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes
@@ -76,4 +82,8 @@ Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o: ../Drivers/STM32F4xx_HAL_D
 	arm-none-eabi-gcc "$<" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Inc -I"C:/Users/jcorleto/Documents/Altium Docs/Piggy-Pad-Firmware-Workspace/N64_Piggy_Pad_Cable/Drivers/CMSIS/Include" -I"C:/Users/jcorleto/Documents/Altium Docs/Piggy-Pad-Firmware-Workspace/N64_Piggy_Pad_Cable/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/jcorleto/Documents/Altium Docs/Piggy-Pad-Firmware-Workspace/N64_Piggy_Pad_Cable/Drivers/STM32F4xx_HAL_Driver/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.d" -MT"$@" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "$@"
 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.o: ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c
 	arm-none-eabi-gcc "$<" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Inc -I"C:/Users/jcorleto/Documents/Altium Docs/Piggy-Pad-Firmware-Workspace/N64_Piggy_Pad_Cable/Drivers/CMSIS/Include" -I"C:/Users/jcorleto/Documents/Altium Docs/Piggy-Pad-Firmware-Workspace/N64_Piggy_Pad_Cable/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/jcorleto/Documents/Altium Docs/Piggy-Pad-Firmware-Workspace/N64_Piggy_Pad_Cable/Drivers/STM32F4xx_HAL_Driver/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.d" -MT"$@" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "$@"
+Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.o: ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c
+	arm-none-eabi-gcc "$<" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Inc -I"C:/Users/jcorleto/Documents/Altium Docs/Piggy-Pad-Firmware-Workspace/N64_Piggy_Pad_Cable/Drivers/CMSIS/Include" -I"C:/Users/jcorleto/Documents/Altium Docs/Piggy-Pad-Firmware-Workspace/N64_Piggy_Pad_Cable/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/jcorleto/Documents/Altium Docs/Piggy-Pad-Firmware-Workspace/N64_Piggy_Pad_Cable/Drivers/STM32F4xx_HAL_Driver/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.d" -MT"$@" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "$@"
+Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_usart.o: ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_usart.c
+	arm-none-eabi-gcc "$<" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Inc -I"C:/Users/jcorleto/Documents/Altium Docs/Piggy-Pad-Firmware-Workspace/N64_Piggy_Pad_Cable/Drivers/CMSIS/Include" -I"C:/Users/jcorleto/Documents/Altium Docs/Piggy-Pad-Firmware-Workspace/N64_Piggy_Pad_Cable/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/jcorleto/Documents/Altium Docs/Piggy-Pad-Firmware-Workspace/N64_Piggy_Pad_Cable/Drivers/STM32F4xx_HAL_Driver/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_usart.d" -MT"$@" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "$@"
 

@@ -1,0 +1,22 @@
+
+
+#ifndef COMMS_N64_CONSOLE_H_
+#define COMMS_N64_CONSOLE_H_
+
+// Macros
+#define OUTGOING_DATA_SIZE	1
+#define COMMS_TIMEOUT_2MS	2
+
+// Private Variables
+static UART_HandleTypeDef huart1;
+
+// Initializer
+void ExpansionPort_Init(void);
+
+// RX
+void ExpansionPort_ReceiveData(ExpansionPortChannel_t);
+
+// TX
+void ExpansionPort_SendData(ExpansionPortChannel_t, uint8_t);
+
+#endif

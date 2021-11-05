@@ -1,0 +1,2 @@
+comms_n64_console.c:4:6:CommsN64Console_Init	40	static
+comms_n64_console.c:41:6:CommsN64Console_SendData	24	static

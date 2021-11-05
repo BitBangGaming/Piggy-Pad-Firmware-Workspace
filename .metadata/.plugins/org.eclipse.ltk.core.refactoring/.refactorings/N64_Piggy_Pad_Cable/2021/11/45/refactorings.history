@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;N64_Piggy_Pad_Cable/Inc/io_mapping_stm32f411ce_blackpill_weactstudio_v3.0.h&apos; to &apos;io_mapping_stm32f411ce_blackpill_weactstudio_v3_0.h&apos;" description="Rename resource &apos;io_mapping_stm32f411ce_blackpill_weactstudio_v3.0.h&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="Inc/io_mapping_stm32f411ce_blackpill_weactstudio_v3.0.h" name="io_mapping_stm32f411ce_blackpill_weactstudio_v3_0.h" stamp="1636139047064" updateReferences="true"/>
+</session>

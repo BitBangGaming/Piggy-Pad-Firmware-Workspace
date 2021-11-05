@@ -1,4 +1,4 @@
-Src/main.o: ../Src/main.c \
+Src/main.o: ../Src/main.c ../Inc/main.h \
  C:/Users/jcorleto/Documents/Altium\ Docs/Piggy-Pad-Firmware-Workspace/N64_Piggy_Pad_Cable/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h \
  ../Inc/stm32f4xx_hal_conf.h \
  C:/Users/jcorleto/Documents/Altium\ Docs/Piggy-Pad-Firmware-Workspace/N64_Piggy_Pad_Cable/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h \
@@ -23,7 +23,13 @@ Src/main.o: ../Src/main.c \
  C:/Users/jcorleto/Documents/Altium\ Docs/Piggy-Pad-Firmware-Workspace/N64_Piggy_Pad_Cable/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h \
  C:/Users/jcorleto/Documents/Altium\ Docs/Piggy-Pad-Firmware-Workspace/N64_Piggy_Pad_Cable/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h \
  C:/Users/jcorleto/Documents/Altium\ Docs/Piggy-Pad-Firmware-Workspace/N64_Piggy_Pad_Cable/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h \
- C:/Users/jcorleto/Documents/Altium\ Docs/Piggy-Pad-Firmware-Workspace/N64_Piggy_Pad_Cable/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h
+ C:/Users/jcorleto/Documents/Altium\ Docs/Piggy-Pad-Firmware-Workspace/N64_Piggy_Pad_Cable/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h \
+ C:/Users/jcorleto/Documents/Altium\ Docs/Piggy-Pad-Firmware-Workspace/N64_Piggy_Pad_Cable/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h \
+ C:/Users/jcorleto/Documents/Altium\ Docs/Piggy-Pad-Firmware-Workspace/N64_Piggy_Pad_Cable/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_usart.h \
+ ../Inc/io_mapping_stm32f411ce_blackpill_weactstudio_v3_0.h \
+ ../Inc/comms_n64_console.h
+
+../Inc/main.h:
 
 C:/Users/jcorleto/Documents/Altium\ Docs/Piggy-Pad-Firmware-Workspace/N64_Piggy_Pad_Cable/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:
 
@@ -74,3 +80,11 @@ C:/Users/jcorleto/Documents/Altium\ Docs/Piggy-Pad-Firmware-Workspace/N64_Piggy_
 C:/Users/jcorleto/Documents/Altium\ Docs/Piggy-Pad-Firmware-Workspace/N64_Piggy_Pad_Cable/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h:
 
 C:/Users/jcorleto/Documents/Altium\ Docs/Piggy-Pad-Firmware-Workspace/N64_Piggy_Pad_Cable/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h:
+
+C:/Users/jcorleto/Documents/Altium\ Docs/Piggy-Pad-Firmware-Workspace/N64_Piggy_Pad_Cable/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:
+
+C:/Users/jcorleto/Documents/Altium\ Docs/Piggy-Pad-Firmware-Workspace/N64_Piggy_Pad_Cable/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_usart.h:
+
+../Inc/io_mapping_stm32f411ce_blackpill_weactstudio_v3_0.h:
+
+../Inc/comms_n64_console.h:

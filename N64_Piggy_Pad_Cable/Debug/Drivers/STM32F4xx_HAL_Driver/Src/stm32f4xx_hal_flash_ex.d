@@ -24,7 +24,9 @@ Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.o: \
  C:/Users/jcorleto/Documents/Altium\ Docs/Piggy-Pad-Firmware-Workspace/N64_Piggy_Pad_Cable/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h \
  C:/Users/jcorleto/Documents/Altium\ Docs/Piggy-Pad-Firmware-Workspace/N64_Piggy_Pad_Cable/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h \
  C:/Users/jcorleto/Documents/Altium\ Docs/Piggy-Pad-Firmware-Workspace/N64_Piggy_Pad_Cable/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h \
- C:/Users/jcorleto/Documents/Altium\ Docs/Piggy-Pad-Firmware-Workspace/N64_Piggy_Pad_Cable/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h
+ C:/Users/jcorleto/Documents/Altium\ Docs/Piggy-Pad-Firmware-Workspace/N64_Piggy_Pad_Cable/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h \
+ C:/Users/jcorleto/Documents/Altium\ Docs/Piggy-Pad-Firmware-Workspace/N64_Piggy_Pad_Cable/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h \
+ C:/Users/jcorleto/Documents/Altium\ Docs/Piggy-Pad-Firmware-Workspace/N64_Piggy_Pad_Cable/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_usart.h
 
 C:/Users/jcorleto/Documents/Altium\ Docs/Piggy-Pad-Firmware-Workspace/N64_Piggy_Pad_Cable/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:
 
@@ -75,3 +77,7 @@ C:/Users/jcorleto/Documents/Altium\ Docs/Piggy-Pad-Firmware-Workspace/N64_Piggy_
 C:/Users/jcorleto/Documents/Altium\ Docs/Piggy-Pad-Firmware-Workspace/N64_Piggy_Pad_Cable/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h:
 
 C:/Users/jcorleto/Documents/Altium\ Docs/Piggy-Pad-Firmware-Workspace/N64_Piggy_Pad_Cable/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h:
+
+C:/Users/jcorleto/Documents/Altium\ Docs/Piggy-Pad-Firmware-Workspace/N64_Piggy_Pad_Cable/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:
+
+C:/Users/jcorleto/Documents/Altium\ Docs/Piggy-Pad-Firmware-Workspace/N64_Piggy_Pad_Cable/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_usart.h:
