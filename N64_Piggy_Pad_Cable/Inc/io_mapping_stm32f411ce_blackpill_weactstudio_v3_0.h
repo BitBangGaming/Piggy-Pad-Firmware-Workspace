@@ -8,6 +8,13 @@
 #define BLUE_LED_BIT 		(1 << BLUE_LED_PIN)
 
 /* Pins for n64 communication */
+#define COMMS_N64_STOP_PIN		(5U)
+#define COMMS_N64_STOP_PIN_HAL	(GPIO_PIN_5)
+#define COMMS_N64_STOP_PORT 	(GPIOB)
+#define COMMS_N64_STOP_BIT 		(1 << COMMS_N64_STOP_PIN)
+#define COMMS_N64_STOP_SET 		(GPIO_BSRR_BS5)
+#define COMMS_N64_STOP_CLEAR 	(GPIO_BSRR_BR5)
+
 #define COMMS_N64_TX_PIN		(6U)
 #define COMMS_N64_TX_PIN_HAL	(GPIO_PIN_6)
 #define COMMS_N64_TX_PORT 		(GPIOB)

@@ -289,3 +289,7 @@
 2021-11-05 12:10:30,270 [INFO] DbMcusDocs:81 - Found 669 MCUs documents
 2021-11-05 12:15:02,559 [INFO] ApiDb:263 - Save user favorites file C:\Users\jcorleto/.stm32cubeide/favorites.mcus.txt: 0 item(s)
 2021-11-05 12:15:02,559 [INFO] ApiDb:267 - User favorites MCUs=[]
+2021-11-06 13:16:11,339 [INFO] Activator:170 - 
+
+
+2021-11-06 13:16:11,355 [INFO] Activator:171 - !SESSION log4j initialized

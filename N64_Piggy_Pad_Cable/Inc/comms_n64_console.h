@@ -25,7 +25,8 @@ void CommsN64Console_Init(void);
 // Setters
 void CommsN64Console_SetPullup(N64PullupState_t);
 
-// TX
-void CommsN64Console_SendPollForData(void);
+// Getters
+void CommsN64Console_GetContollerStatus(void);
+void CommsN64Console_GetContollerInputs(void);
 
 #endif

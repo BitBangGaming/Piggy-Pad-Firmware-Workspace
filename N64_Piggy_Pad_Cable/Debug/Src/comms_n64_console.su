@@ -1,3 +1,4 @@
 comms_n64_console.c:4:6:CommsN64Console_Init	40	static
-comms_n64_console.c:43:6:CommsN64Console_SetPullup	16	static
-comms_n64_console.c:59:6:CommsN64Console_SendPollForData	16	static
+comms_n64_console.c:51:6:CommsN64Console_SetPullup	16	static
+comms_n64_console.c:67:6:CommsN64Console_GetContollerStatus	4	static
+comms_n64_console.c:109:6:CommsN64Console_GetContollerInputs	4	static

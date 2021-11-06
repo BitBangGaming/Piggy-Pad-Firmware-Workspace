@@ -1,4 +1,4 @@
-11:55:53 **** Incremental Build of configuration Debug for project N64_Piggy_Pad_Cable ****
+15:35:52 **** Incremental Build of configuration Debug for project N64_Piggy_Pad_Cable ****
 make -j12 all 
 arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Inc -I"C:/Users/jcorleto/Documents/Altium Docs/Piggy-Pad-Firmware-Workspace/N64_Piggy_Pad_Cable/Drivers/CMSIS/Include" -I"C:/Users/jcorleto/Documents/Altium Docs/Piggy-Pad-Firmware-Workspace/N64_Piggy_Pad_Cable/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/jcorleto/Documents/Altium Docs/Piggy-Pad-Firmware-Workspace/N64_Piggy_Pad_Cable/Drivers/STM32F4xx_HAL_Driver/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
 ../Src/main.c: In function 'SystemClock_Config':
@@ -21,13 +21,13 @@ arm-none-eabi-objdump -h -S  N64_Piggy_Pad_Cable.elf  > "N64_Piggy_Pad_Cable.lis
 arm-none-eabi-objcopy  -O binary  N64_Piggy_Pad_Cable.elf  "N64_Piggy_Pad_Cable.bin"
 arm-none-eabi-size   N64_Piggy_Pad_Cable.elf 
    text	   data	    bss	    dec	    hex	filename
-   5760	     20	   1644	   7424	   1d00	N64_Piggy_Pad_Cable.elf
+   5440	     20	   1644	   7104	   1bc0	N64_Piggy_Pad_Cable.elf
 Finished building: default.size.stdout
  
-Finished building: N64_Piggy_Pad_Cable.bin
 Finished building: N64_Piggy_Pad_Cable.list
+Finished building: N64_Piggy_Pad_Cable.bin
  
  
 
-11:55:54 Build Finished. 0 errors, 3 warnings. (took 791ms)
+15:35:53 Build Finished. 0 errors, 3 warnings. (took 725ms)
 

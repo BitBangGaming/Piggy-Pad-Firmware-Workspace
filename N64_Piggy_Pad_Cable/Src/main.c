@@ -14,7 +14,7 @@ int main(void)
 	/* Main application loop */
     while(1)
     {
-    	CommsN64Console_SendPollForData();
+    	CommsN64Console_GetContollerInputs();
     	Main_SetBlueLed(BLUE_LED_ON);
     	HAL_Delay(500);
     	Main_SetBlueLed(BLUE_LED_OFF);
