@@ -26,6 +26,6 @@ void CommsN64Console_Init(void);
 void CommsN64Console_SetPullup(N64PullupState_t);
 
 // TX
-void CommsN64Console_SendData(uint8_t);
+void CommsN64Console_SendPollForData(void);
 
 #endif

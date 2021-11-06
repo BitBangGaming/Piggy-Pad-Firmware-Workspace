@@ -87,3 +87,12 @@ org.eclipse.swt.SWTException: Widget is disposed
 	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:657)
 	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:594)
 	at org.eclipse.equinox.launcher.Main.run(Main.java:1447)
+
+!ENTRY org.eclipse.cdt.core 1 0 2021-11-05 17:42:12.371
+!MESSAGE Indexed 'clock test' (21 sources, 80 headers) in 0.673 sec: 4,227 declarations; 17,777 references; 0 unresolved inclusions; 1 syntax errors; 2 unresolved names (0.0091%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2021-11-05 17:44:51.855
+!MESSAGE Indexed 'test' (21 sources, 80 headers) in 1.54 sec: 4,344 declarations; 17,433 references; 0 unresolved inclusions; 1 syntax errors; 2 unresolved names (0.0092%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2021-11-05 17:48:39.759
+!MESSAGE Indexed 'Clock_Config' (21 sources, 80 headers) in 0.537 sec: 4,227 declarations; 17,777 references; 0 unresolved inclusions; 1 syntax errors; 2 unresolved names (0.0091%)

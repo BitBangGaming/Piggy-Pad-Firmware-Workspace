@@ -21,7 +21,7 @@ void CommsN64Console_Init()
 
 	// USART1 TX/RX
 	GPIO_InitStruct_CommsN64Console.Pin = COMMS_N64_TX_PIN_HAL | COMMS_N64_RX_PIN_HAL;
-	GPIO_InitStruct_CommsN64Console.Mode = GPIO_MODE_AF_PP;
+	GPIO_InitStruct_CommsN64Console.Mode = GPIO_MODE_AF_OD;
 	GPIO_InitStruct_CommsN64Console.Alternate = GPIO_AF7_USART1;
 	GPIO_InitStruct_CommsN64Console.Pull = GPIO_NOPULL;
 	GPIO_InitStruct_CommsN64Console.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
@@ -29,13 +29,13 @@ void CommsN64Console_Init()
 
 	// Configure USART1
 	huart1.Instance = USART1;
-	huart1.Init.BaudRate = 9600;
+	huart1.Init.BaudRate = 1250000;
 	huart1.Init.WordLength = UART_WORDLENGTH_8B;
 	huart1.Init.StopBits = UART_STOPBITS_1;
 	huart1.Init.Parity = UART_PARITY_NONE;
 	huart1.Init.Mode = UART_MODE_TX_RX;
 	huart1.Init.HwFlowCtl = UART_HWCONTROL_NONE;
-	huart1.Init.OverSampling = UART_OVERSAMPLING_16;
+	huart1.Init.OverSampling = UART_OVERSAMPLING_8;
 
 	HAL_UART_Init(&huart1);
 }
@@ -56,11 +56,9 @@ void CommsN64Console_SetPullup(N64PullupState_t pull)
 	}
 }
 
-void CommsN64Console_SendData(uint8_t tempData)
+void CommsN64Console_SendPollForData()
 {
 	// Setup array to send data
-	uint8_t dataToSend[1] = {tempData};
-
-	// Always 1 byte to send with 2ms timeout
-	HAL_UART_Transmit(&huart1, dataToSend, 1, 100);
+	uint8_t dataToSend[4] = {0x08, 0x08, 0x08, 0xE8};
+	HAL_UART_Transmit(&huart1, dataToSend, 4, 1000);
 }

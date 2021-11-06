@@ -16,4 +16,7 @@ void Main_Init(void);
 // Setters
 void Main_SetBlueLed(GPIO_PinState);
 
+// Misc
+void SystemClock_Config(void);
+
 #endif
