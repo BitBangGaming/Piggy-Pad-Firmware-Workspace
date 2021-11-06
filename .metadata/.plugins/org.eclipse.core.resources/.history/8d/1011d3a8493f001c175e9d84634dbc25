@@ -16,9 +16,9 @@ int main(void)
     {
     	CommsN64Console_GetContollerInputs();
     	Main_SetBlueLed(BLUE_LED_ON);
-    	HAL_Delay(1);
+    	HAL_Delay(500);
     	Main_SetBlueLed(BLUE_LED_OFF);
-    	HAL_Delay(1);
+    	HAL_Delay(500);
     }
 }
 

@@ -64,15 +64,6 @@ void CommsN64Console_SetPullup(N64PullupState_t pull)
 	}
 }
 
-void CommsN64Console_SendStopBit()
-{
-	/* The timing of the stop bit does not need to be so precise. */
-	COMMS_N64_STOP_PORT->BSRR = COMMS_N64_STOP_CLEAR;
-	volatile uint32_t counter = 1;
-		while(counter--);
-	COMMS_N64_STOP_PORT->BSRR = COMMS_N64_STOP_SET;
-}
-
 void CommsN64Console_GetContollerStatus()
 {
 	/* Send send a byte of data to the n64, you must send 4 bytes of data from
@@ -111,7 +102,8 @@ void CommsN64Console_GetContollerStatus()
 
 	// Make sure the last uart byte transmission is complete
 	while(!(USART1->SR & USART_SR_TC)){};
-	CommsN64Console_SendStopBit();
+	COMMS_N64_STOP_PORT->BSRR = COMMS_N64_STOP_CLEAR;
+	COMMS_N64_STOP_PORT->BSRR = COMMS_N64_STOP_SET;
 }
 
 void CommsN64Console_GetContollerInputs()
@@ -152,5 +144,11 @@ void CommsN64Console_GetContollerInputs()
 
 	// Make sure the last uart byte transmission is complete
 	while(!(USART1->SR & USART_SR_TC)){};
-	CommsN64Console_SendStopBit();
+	COMMS_N64_STOP_PORT->BSRR = COMMS_N64_STOP_CLEAR;
+	uint32 counter = 0;
+	for(uint32_t i = 0; i < 100; i = i + 1)
+	{
+		counter = counter + 1;
+	}
+	COMMS_N64_STOP_PORT->BSRR = COMMS_N64_STOP_SET;
 }

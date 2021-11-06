@@ -111,7 +111,8 @@ void CommsN64Console_GetContollerStatus()
 
 	// Make sure the last uart byte transmission is complete
 	while(!(USART1->SR & USART_SR_TC)){};
-	CommsN64Console_SendStopBit();
+	COMMS_N64_STOP_PORT->BSRR = COMMS_N64_STOP_CLEAR;
+	COMMS_N64_STOP_PORT->BSRR = COMMS_N64_STOP_SET;
 }
 
 void CommsN64Console_GetContollerInputs()
@@ -152,5 +153,5 @@ void CommsN64Console_GetContollerInputs()
 
 	// Make sure the last uart byte transmission is complete
 	while(!(USART1->SR & USART_SR_TC)){};
-	CommsN64Console_SendStopBit();
+
 }
