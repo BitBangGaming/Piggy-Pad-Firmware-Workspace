@@ -18,6 +18,7 @@ typedef enum
 
 // Private Variables
 static UART_HandleTypeDef huart1;
+static uint8_t controllerResponse[16];
 
 // Initializer
 void CommsN64Console_Init(void);
@@ -27,7 +28,7 @@ void CommsN64Console_SetPullup(N64PullupState_t);
 inline void CommsN64Console_SendStopBit(void);
 
 // Getters
-void CommsN64Console_GetContollerStatus(void);
-void CommsN64Console_GetContollerInputs(void);
+inline void CommsN64Console_GetContollerStatus(void);
+inline void CommsN64Console_GetContollerInputs(void);
 
 #endif

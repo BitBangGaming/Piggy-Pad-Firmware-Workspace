@@ -1,5 +1,5 @@
-comms_n64_console.c:4:6:CommsN64Console_Init	40	static
-comms_n64_console.c:51:6:CommsN64Console_SetPullup	16	static
-comms_n64_console.c:67:6:CommsN64Console_SendStopBit	16	static
-comms_n64_console.c:76:6:CommsN64Console_GetContollerStatus	8	static
-comms_n64_console.c:117:6:CommsN64Console_GetContollerInputs	8	static
+comms_n64_console.c:4:6:CommsN64Console_Init	56	static
+comms_n64_console.c:51:6:CommsN64Console_SetPullup	8	static
+comms_n64_console.c:67:6:CommsN64Console_SendStopBit	8	static
+comms_n64_console.c:76:6:CommsN64Console_GetContollerStatus	0	static
+comms_n64_console.c:81:6:CommsN64Console_GetContollerInputs	16	static

@@ -11,14 +11,13 @@ int main(void)
 	/* Apply a pullup on n64 data line */
 	CommsN64Console_SetPullup(N64_PULLUP);
 
+	/* Give some delay for initialization */
+	HAL_Delay(100);
+
 	/* Main application loop */
     while(1)
     {
     	CommsN64Console_GetContollerInputs();
-    	Main_SetBlueLed(BLUE_LED_ON);
-    	HAL_Delay(1);
-    	Main_SetBlueLed(BLUE_LED_OFF);
-    	HAL_Delay(1);
     }
 }
 
