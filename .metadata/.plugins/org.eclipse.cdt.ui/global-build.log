@@ -1,4 +1,4 @@
-15:31:28 **** Incremental Build of configuration Debug for project N64_Piggy_Pad_Cable ****
+17:08:10 **** Incremental Build of configuration Debug for project N64_Piggy_Pad_Cable ****
 make -j12 all 
 arm-none-eabi-gcc "../Src/comms_n64_console.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Inc -I"C:/Users/jcorleto/Documents/Altium Docs/Piggy-Pad-Firmware-Workspace/N64_Piggy_Pad_Cable/Drivers/CMSIS/Include" -I"C:/Users/jcorleto/Documents/Altium Docs/Piggy-Pad-Firmware-Workspace/N64_Piggy_Pad_Cable/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/jcorleto/Documents/Altium Docs/Piggy-Pad-Firmware-Workspace/N64_Piggy_Pad_Cable/Drivers/STM32F4xx_HAL_Driver/Inc" -O1 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/comms_n64_console.d" -MT"Src/comms_n64_console.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/comms_n64_console.o"
 arm-none-eabi-gcc -o "N64_Piggy_Pad_Cable.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\jcorleto\Documents\Altium Docs\Piggy-Pad-Firmware-Workspace\N64_Piggy_Pad_Cable\STM32F411CEUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="N64_Piggy_Pad_Cable.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
@@ -8,10 +8,10 @@ arm-none-eabi-objdump -h -S  N64_Piggy_Pad_Cable.elf  > "N64_Piggy_Pad_Cable.lis
 arm-none-eabi-objcopy  -O binary  N64_Piggy_Pad_Cable.elf  "N64_Piggy_Pad_Cable.bin"
 arm-none-eabi-size   N64_Piggy_Pad_Cable.elf 
    text	   data	    bss	    dec	    hex	filename
-   3900	     20	   1652	   5572	   15c4	N64_Piggy_Pad_Cable.elf
+   3692	     20	   1652	   5364	   14f4	N64_Piggy_Pad_Cable.elf
 Finished building: default.size.stdout
  
-Finished building: N64_Piggy_Pad_Cable.list
 Finished building: N64_Piggy_Pad_Cable.bin
+Finished building: N64_Piggy_Pad_Cable.list
  
  

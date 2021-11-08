@@ -93,7 +93,7 @@ void CommsN64Console_GetContollerInputs()
 	 * begins to respond. For a STM32F411CE running at 100MHz, this be more than
 	 * enough time to prepare a way to capture the data.
 	 */
-
+while(1){
 	// Disable the receiver
 	USART1->CR1 &= ~USART_CR1_RE;
 
@@ -130,7 +130,6 @@ void CommsN64Console_GetContollerInputs()
 	 */
 	// Enable the uart receiver
 	USART1->CR1 |= USART_CR1_RE;
-	controllerResponse[0] = USART1->DR;
 
 	// Grab states for A and B
 	while(!(USART1->SR & USART_SR_RXNE)){};
@@ -180,6 +179,14 @@ void CommsN64Console_GetContollerInputs()
 	while(!(USART1->SR & USART_SR_RXNE)){};
 	controllerResponse[11] = USART1->DR;
 
+	USART1->CR1 &= ~USART_CR1_RE;
+	HAL_Delay(2);
+	while(!(USART1->SR & USART_SR_TXE)){};
+	USART1->DR = (controllerResponse[14] & 0xFF);
+	while(!(USART1->SR & USART_SR_TC)){};
+	HAL_Delay(5);
+}
+	// it starts to die fast below
 	// Grab states for Y-AXIS BIT7 & BIT6
 	while(!(USART1->SR & USART_SR_RXNE)){};
 	controllerResponse[12] = USART1->DR;
@@ -195,14 +202,4 @@ void CommsN64Console_GetContollerInputs()
 	// Grab states for Y-AXIS BIT1 & BIT0
 	while(!(USART1->SR & USART_SR_RXNE)){};
 	controllerResponse[15] = USART1->DR;
-
-	// Disable the uart receiver
-	USART1->CR1 &= ~USART_CR1_RE;
-
-	// Temp code for debugging on logic analyzer
-	HAL_Delay(1);
-	while(!(USART1->SR & USART_SR_TXE)){};
-	USART1->DR = (controllerResponse[3] & 0xFF);
-	while(!(USART1->SR & USART_SR_TC)){};
-	HAL_Delay(10);;
 }
