@@ -17,6 +17,11 @@ int main(void)
 	/* Main application loop */
     while(1)
     {
+    	// Add about 100us of delay (mcu clock dependent)
+    	volatile uint32_t counter = 200;
+    	while(counter--);
+
+    	// Poll for n64 controller state
     	CommsN64Console_GetContollerInputs();
     }
 }

@@ -37,8 +37,8 @@ void CommsN64Console_Init()
 
 	// Configure USART1
 	huart1.Instance = USART1;
-	huart1.Init.BaudRate = 1250000;
-	huart1.Init.WordLength = UART_WORDLENGTH_8B;
+	huart1.Init.BaudRate = 1300000;	// Started w/ 1,250,000 but experiments show 1,300,000 is more robust
+	huart1.Init.WordLength = USART_WORDLENGTH_8B;
 	huart1.Init.StopBits = UART_STOPBITS_1;
 	huart1.Init.Parity = UART_PARITY_NONE;
 	huart1.Init.Mode = UART_MODE_TX_RX;
@@ -93,7 +93,6 @@ void CommsN64Console_GetContollerInputs()
 	 * begins to respond. For a STM32F411CE running at 100MHz, this be more than
 	 * enough time to prepare a way to capture the data.
 	 */
-while(1){
 	// Disable the receiver
 	USART1->CR1 &= ~USART_CR1_RE;
 
@@ -174,19 +173,10 @@ while(1){
 	// Grab states for X-AXIS BIT3 & BIT2
 	while(!(USART1->SR & USART_SR_RXNE)){};
 	controllerResponse[10] = USART1->DR;
-
 	// Grab states for X-AXIS BIT1 & BIT0
 	while(!(USART1->SR & USART_SR_RXNE)){};
 	controllerResponse[11] = USART1->DR;
 
-	USART1->CR1 &= ~USART_CR1_RE;
-	HAL_Delay(2);
-	while(!(USART1->SR & USART_SR_TXE)){};
-	USART1->DR = (controllerResponse[14] & 0xFF);
-	while(!(USART1->SR & USART_SR_TC)){};
-	HAL_Delay(5);
-}
-	// it starts to die fast below
 	// Grab states for Y-AXIS BIT7 & BIT6
 	while(!(USART1->SR & USART_SR_RXNE)){};
 	controllerResponse[12] = USART1->DR;
@@ -202,4 +192,13 @@ while(1){
 	// Grab states for Y-AXIS BIT1 & BIT0
 	while(!(USART1->SR & USART_SR_RXNE)){};
 	controllerResponse[15] = USART1->DR;
+
+	// Disable the receiver
+	USART1->CR1 &= ~USART_CR1_RE;
+
+	HAL_Delay(2);
+	while(!(USART1->SR & USART_SR_TXE)){};
+	USART1->DR = (controllerResponse[0] & 0xFF);
+	while(!(USART1->SR & USART_SR_TC)){};
+	HAL_Delay(5);
 }

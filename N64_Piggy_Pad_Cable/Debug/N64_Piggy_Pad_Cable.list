@@ -5,47 +5,47 @@ Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
   0 .isr_vector   00000198  08000000  08000000  00010000  2**0
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
-  1 .text         00000cc4  08000198  08000198  00010198  2**2
+  1 .text         00000d84  08000198  08000198  00010198  2**2
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  2 .rodata       00000008  08000e5c  08000e5c  00010e5c  2**2
+  2 .rodata       00000008  08000f1c  08000f1c  00010f1c  2**2
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
-  3 .ARM.extab    00000000  08000e64  08000e64  0002000c  2**0
+  3 .ARM.extab    00000000  08000f24  08000f24  0002000c  2**0
                   CONTENTS
-  4 .ARM          00000008  08000e64  08000e64  00010e64  2**2
+  4 .ARM          00000008  08000f24  08000f24  00010f24  2**2
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
-  5 .preinit_array 00000000  08000e6c  08000e6c  0002000c  2**0
+  5 .preinit_array 00000000  08000f2c  08000f2c  0002000c  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  6 .init_array   00000004  08000e6c  08000e6c  00010e6c  2**2
+  6 .init_array   00000004  08000f2c  08000f2c  00010f2c  2**2
                   CONTENTS, ALLOC, LOAD, DATA
-  7 .fini_array   00000004  08000e70  08000e70  00010e70  2**2
+  7 .fini_array   00000004  08000f30  08000f30  00010f30  2**2
                   CONTENTS, ALLOC, LOAD, DATA
-  8 .data         0000000c  20000000  08000e74  00020000  2**2
+  8 .data         0000000c  20000000  08000f34  00020000  2**2
                   CONTENTS, ALLOC, LOAD, DATA
-  9 .bss          00000074  2000000c  08000e80  0002000c  2**2
+  9 .bss          00000074  2000000c  08000f40  0002000c  2**2
                   ALLOC
- 10 ._user_heap_stack 00000600  20000080  08000e80  00020080  2**0
+ 10 ._user_heap_stack 00000600  20000080  08000f40  00020080  2**0
                   ALLOC
  11 .ARM.attributes 00000030  00000000  00000000  0002000c  2**0
                   CONTENTS, READONLY
- 12 .debug_info   00005e6f  00000000  00000000  0002003c  2**0
+ 12 .debug_info   00005e8b  00000000  00000000  0002003c  2**0
                   CONTENTS, READONLY, DEBUGGING
- 13 .debug_abbrev 00001165  00000000  00000000  00025eab  2**0
+ 13 .debug_abbrev 00001167  00000000  00000000  00025ec7  2**0
                   CONTENTS, READONLY, DEBUGGING
- 14 .debug_loc    00002b8e  00000000  00000000  00027010  2**0
+ 14 .debug_loc    00002b8e  00000000  00000000  0002702e  2**0
                   CONTENTS, READONLY, DEBUGGING
- 15 .debug_aranges 00000520  00000000  00000000  00029ba0  2**3
+ 15 .debug_aranges 00000520  00000000  00000000  00029bc0  2**3
                   CONTENTS, READONLY, DEBUGGING
- 16 .debug_ranges 00000520  00000000  00000000  0002a0c0  2**3
+ 16 .debug_ranges 00000508  00000000  00000000  0002a0e0  2**3
                   CONTENTS, READONLY, DEBUGGING
- 17 .debug_macro  00000e32  00000000  00000000  0002a5e0  2**0
+ 17 .debug_macro  00000e32  00000000  00000000  0002a5e8  2**0
                   CONTENTS, READONLY, DEBUGGING
- 18 .debug_line   0000509c  00000000  00000000  0002b412  2**0
+ 18 .debug_line   000050e7  00000000  00000000  0002b41a  2**0
                   CONTENTS, READONLY, DEBUGGING
- 19 .debug_str    00082a95  00000000  00000000  000304ae  2**0
+ 19 .debug_str    00082a95  00000000  00000000  00030501  2**0
                   CONTENTS, READONLY, DEBUGGING
- 20 .comment      0000007b  00000000  00000000  000b2f43  2**0
+ 20 .comment      0000007b  00000000  00000000  000b2f96  2**0
                   CONTENTS, READONLY
- 21 .debug_frame  00000cd8  00000000  00000000  000b2fc0  2**2
+ 21 .debug_frame  00000cd8  00000000  00000000  000b3014  2**2
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -64,7 +64,7 @@ Disassembly of section .text:
  80001ae:	bd10      	pop	{r4, pc}
  80001b0:	2000000c 	.word	0x2000000c
  80001b4:	00000000 	.word	0x00000000
- 80001b8:	08000e44 	.word	0x08000e44
+ 80001b8:	08000f04 	.word	0x08000f04
 
 080001bc <frame_dummy>:
  80001bc:	b508      	push	{r3, lr}
@@ -76,7 +76,7 @@ Disassembly of section .text:
  80001ca:	bd08      	pop	{r3, pc}
  80001cc:	00000000 	.word	0x00000000
  80001d0:	20000010 	.word	0x20000010
- 80001d4:	08000e44 	.word	0x08000e44
+ 80001d4:	08000f04 	.word	0x08000f04
 
 080001d8 <__aeabi_uldivmod>:
  80001d8:	b953      	cbnz	r3, 80001f0 <__aeabi_uldivmod+0x18>
@@ -1088,7 +1088,7 @@ uint32_t HAL_RCC_GetPCLK1Freq(void)
  80008f4:	40d8      	lsrs	r0, r3
  80008f6:	4770      	bx	lr
  80008f8:	40023800 	.word	0x40023800
- 80008fc:	08000e5c 	.word	0x08000e5c
+ 80008fc:	08000f1c 	.word	0x08000f1c
  8000900:	20000008 	.word	0x20000008
 
 08000904 <HAL_RCC_GetPCLK2Freq>:
@@ -1109,7 +1109,7 @@ uint32_t HAL_RCC_GetPCLK2Freq(void)
  8000914:	40d8      	lsrs	r0, r3
  8000916:	4770      	bx	lr
  8000918:	40023800 	.word	0x40023800
- 800091c:	08000e5c 	.word	0x08000e5c
+ 800091c:	08000f1c 	.word	0x08000f1c
  8000920:	20000008 	.word	0x20000008
 
 08000924 <UART_SetConfig>:
@@ -1426,10 +1426,10 @@ void CommsN64Console_Init()
  8000b2a:	480b      	ldr	r0, [pc, #44]	; (8000b58 <CommsN64Console_Init+0xa8>)
  8000b2c:	4b0b      	ldr	r3, [pc, #44]	; (8000b5c <CommsN64Console_Init+0xac>)
  8000b2e:	6003      	str	r3, [r0, #0]
-	huart1.Init.BaudRate = 1250000;
+	huart1.Init.BaudRate = 1300000;	// Started w/ 1,250,000 but experiments show 1,300,000 is more robust
  8000b30:	4b0b      	ldr	r3, [pc, #44]	; (8000b60 <CommsN64Console_Init+0xb0>)
  8000b32:	6043      	str	r3, [r0, #4]
-	huart1.Init.WordLength = UART_WORDLENGTH_8B;
+	huart1.Init.WordLength = USART_WORDLENGTH_8B;
  8000b34:	6084      	str	r4, [r0, #8]
 	huart1.Init.StopBits = UART_STOPBITS_1;
  8000b36:	60c4      	str	r4, [r0, #12]
@@ -1454,7 +1454,7 @@ void CommsN64Console_Init()
  8000b54:	40020400 	.word	0x40020400
  8000b58:	20000038 	.word	0x20000038
  8000b5c:	40011000 	.word	0x40011000
- 8000b60:	001312d0 	.word	0x001312d0
+ 8000b60:	0013d620 	.word	0x0013d620
 
 08000b64 <CommsN64Console_SetPullup>:
 
@@ -1499,525 +1499,639 @@ void CommsN64Console_SetPullup(N64PullupState_t pull)
 
 void CommsN64Console_GetContollerInputs()
 {
- 8000b94:	b580      	push	{r7, lr}
- 8000b96:	b082      	sub	sp, #8
+ 8000b94:	b500      	push	{lr}
+ 8000b96:	b083      	sub	sp, #12
+	 * performed, there is about 2.5 microseconds left before the n64 controller
 	 * begins to respond. For a STM32F411CE running at 100MHz, this be more than
 	 * enough time to prepare a way to capture the data.
 	 */
-while(1){
 	// Disable the receiver
 	USART1->CR1 &= ~USART_CR1_RE;
- 8000b98:	4c48      	ldr	r4, [pc, #288]	; (8000cbc <CommsN64Console_GetContollerInputs+0x128>)
+ 8000b98:	4a74      	ldr	r2, [pc, #464]	; (8000d6c <CommsN64Console_GetContollerInputs+0x1d8>)
+ 8000b9a:	68d3      	ldr	r3, [r2, #12]
+ 8000b9c:	f023 0304 	bic.w	r3, r3, #4
+ 8000ba0:	60d3      	str	r3, [r2, #12]
 
 	// Make sure the transmit data register is empty before sending next byte
 	while(!(USART1->SR & USART_SR_TXE)){};
+ 8000ba2:	6813      	ldr	r3, [r2, #0]
+ 8000ba4:	f013 0f80 	tst.w	r3, #128	; 0x80
+ 8000ba8:	d0fb      	beq.n	8000ba2 <CommsN64Console_GetContollerInputs+0xe>
 	// Send a byte (2 n64 bits)
 	USART1->DR = (0x08 & 0xFF);
- 8000b9a:	2608      	movs	r6, #8
-	USART1->DR = (0x08 & 0xFF);
+ 8000baa:	4b70      	ldr	r3, [pc, #448]	; (8000d6c <CommsN64Console_GetContollerInputs+0x1d8>)
+ 8000bac:	2208      	movs	r2, #8
+ 8000bae:	605a      	str	r2, [r3, #4]
 
 	// Make sure the transmit data register is empty before sending a byte
 	while(!(USART1->SR & USART_SR_TXE)){};
+ 8000bb0:	461a      	mov	r2, r3
+ 8000bb2:	6813      	ldr	r3, [r2, #0]
+ 8000bb4:	f013 0f80 	tst.w	r3, #128	; 0x80
+ 8000bb8:	d0fb      	beq.n	8000bb2 <CommsN64Console_GetContollerInputs+0x1e>
+	// Send a byte (2 n64 bits)
+	USART1->DR = (0x08 & 0xFF);
+ 8000bba:	4b6c      	ldr	r3, [pc, #432]	; (8000d6c <CommsN64Console_GetContollerInputs+0x1d8>)
+ 8000bbc:	2208      	movs	r2, #8
+ 8000bbe:	605a      	str	r2, [r3, #4]
+
+	// Make sure the transmit data register is empty before sending a byte
+	while(!(USART1->SR & USART_SR_TXE)){};
+ 8000bc0:	461a      	mov	r2, r3
+ 8000bc2:	6813      	ldr	r3, [r2, #0]
+ 8000bc4:	f013 0f80 	tst.w	r3, #128	; 0x80
+ 8000bc8:	d0fb      	beq.n	8000bc2 <CommsN64Console_GetContollerInputs+0x2e>
+	// Send a byte (2 n64 bits)
+	USART1->DR = (0x08 & 0xFF);
+ 8000bca:	4b68      	ldr	r3, [pc, #416]	; (8000d6c <CommsN64Console_GetContollerInputs+0x1d8>)
+ 8000bcc:	2208      	movs	r2, #8
+ 8000bce:	605a      	str	r2, [r3, #4]
+
+	// Make sure the transmit data register is empty before sending a byte
+	while(!(USART1->SR & USART_SR_TXE)){};
+ 8000bd0:	461a      	mov	r2, r3
+ 8000bd2:	6813      	ldr	r3, [r2, #0]
+ 8000bd4:	f013 0f80 	tst.w	r3, #128	; 0x80
+ 8000bd8:	d0fb      	beq.n	8000bd2 <CommsN64Console_GetContollerInputs+0x3e>
 	// Send a byte (2 n64 bits)
 	USART1->DR = (0xE8 & 0xFF);
- 8000b9c:	f04f 09e8 	mov.w	r9, #232	; 0xe8
+ 8000bda:	4b64      	ldr	r3, [pc, #400]	; (8000d6c <CommsN64Console_GetContollerInputs+0x1d8>)
+ 8000bdc:	22e8      	movs	r2, #232	; 0xe8
+ 8000bde:	605a      	str	r2, [r3, #4]
+
+	// Make sure the last uart byte transmission is complete before sending stop bit
+	while(!(USART1->SR & USART_SR_TC)){};
+ 8000be0:	461a      	mov	r2, r3
+ 8000be2:	6813      	ldr	r3, [r2, #0]
+ 8000be4:	f013 0f40 	tst.w	r3, #64	; 0x40
+ 8000be8:	d0fb      	beq.n	8000be2 <CommsN64Console_GetContollerInputs+0x4e>
 	COMMS_N64_STOP_PORT->BSRR = COMMS_N64_STOP_CLEAR;
- 8000ba0:	4f47      	ldr	r7, [pc, #284]	; (8000cc0 <CommsN64Console_GetContollerInputs+0x12c>)
- 8000ba2:	f44f 1800 	mov.w	r8, #2097152	; 0x200000
+ 8000bea:	4b61      	ldr	r3, [pc, #388]	; (8000d70 <CommsN64Console_GetContollerInputs+0x1dc>)
+ 8000bec:	f44f 1200 	mov.w	r2, #2097152	; 0x200000
+ 8000bf0:	619a      	str	r2, [r3, #24]
+	volatile uint32_t counter = 1;
+ 8000bf2:	2301      	movs	r3, #1
+ 8000bf4:	9301      	str	r3, [sp, #4]
+	while(counter--);
+ 8000bf6:	9b01      	ldr	r3, [sp, #4]
+ 8000bf8:	1e5a      	subs	r2, r3, #1
+ 8000bfa:	9201      	str	r2, [sp, #4]
+ 8000bfc:	2b00      	cmp	r3, #0
+ 8000bfe:	d1fa      	bne.n	8000bf6 <CommsN64Console_GetContollerInputs+0x62>
+	COMMS_N64_STOP_PORT->BSRR = COMMS_N64_STOP_SET;
+ 8000c00:	f103 4380 	add.w	r3, r3, #1073741824	; 0x40000000
+ 8000c04:	f503 3301 	add.w	r3, r3, #132096	; 0x20400
+ 8000c08:	2220      	movs	r2, #32
+ 8000c0a:	619a      	str	r2, [r3, #24]
+	 * bit after this 4 n64 byte transmission. That means the uart receiver must
+	 * be disabled after the last acquired byte. Of course before grabbing the
+	 * first byte, enabled the uart receiver.
+	 */
 	// Enable the uart receiver
 	USART1->CR1 |= USART_CR1_RE;
+ 8000c0c:	4a57      	ldr	r2, [pc, #348]	; (8000d6c <CommsN64Console_GetContollerInputs+0x1d8>)
+ 8000c0e:	68d3      	ldr	r3, [r2, #12]
+ 8000c10:	f043 0304 	orr.w	r3, r3, #4
+ 8000c14:	60d3      	str	r3, [r2, #12]
 
 	// Grab states for A and B
 	while(!(USART1->SR & USART_SR_RXNE)){};
+ 8000c16:	6813      	ldr	r3, [r2, #0]
+ 8000c18:	f013 0f20 	tst.w	r3, #32
+ 8000c1c:	d0fb      	beq.n	8000c16 <CommsN64Console_GetContollerInputs+0x82>
 	controllerResponse[0] = USART1->DR;
- 8000ba6:	4d47      	ldr	r5, [pc, #284]	; (8000cc4 <CommsN64Console_GetContollerInputs+0x130>)
-	USART1->CR1 &= ~USART_CR1_RE;
- 8000ba8:	68e3      	ldr	r3, [r4, #12]
- 8000baa:	f023 0304 	bic.w	r3, r3, #4
- 8000bae:	60e3      	str	r3, [r4, #12]
-	while(!(USART1->SR & USART_SR_TXE)){};
- 8000bb0:	6823      	ldr	r3, [r4, #0]
- 8000bb2:	f013 0f80 	tst.w	r3, #128	; 0x80
- 8000bb6:	d0fb      	beq.n	8000bb0 <CommsN64Console_GetContollerInputs+0x1c>
-	USART1->DR = (0x08 & 0xFF);
- 8000bb8:	6066      	str	r6, [r4, #4]
-	while(!(USART1->SR & USART_SR_TXE)){};
- 8000bba:	6823      	ldr	r3, [r4, #0]
- 8000bbc:	f013 0f80 	tst.w	r3, #128	; 0x80
- 8000bc0:	d0fb      	beq.n	8000bba <CommsN64Console_GetContollerInputs+0x26>
-	USART1->DR = (0x08 & 0xFF);
- 8000bc2:	6066      	str	r6, [r4, #4]
-	while(!(USART1->SR & USART_SR_TXE)){};
- 8000bc4:	6823      	ldr	r3, [r4, #0]
- 8000bc6:	f013 0f80 	tst.w	r3, #128	; 0x80
- 8000bca:	d0fb      	beq.n	8000bc4 <CommsN64Console_GetContollerInputs+0x30>
-	USART1->DR = (0x08 & 0xFF);
- 8000bcc:	6066      	str	r6, [r4, #4]
-	while(!(USART1->SR & USART_SR_TXE)){};
- 8000bce:	6823      	ldr	r3, [r4, #0]
- 8000bd0:	f013 0f80 	tst.w	r3, #128	; 0x80
- 8000bd4:	d0fb      	beq.n	8000bce <CommsN64Console_GetContollerInputs+0x3a>
-	USART1->DR = (0xE8 & 0xFF);
- 8000bd6:	f8c4 9004 	str.w	r9, [r4, #4]
-	while(!(USART1->SR & USART_SR_TC)){};
- 8000bda:	6823      	ldr	r3, [r4, #0]
- 8000bdc:	f013 0f40 	tst.w	r3, #64	; 0x40
- 8000be0:	d0fb      	beq.n	8000bda <CommsN64Console_GetContollerInputs+0x46>
-	COMMS_N64_STOP_PORT->BSRR = COMMS_N64_STOP_CLEAR;
- 8000be2:	f8c7 8018 	str.w	r8, [r7, #24]
-	volatile uint32_t counter = 1;
- 8000be6:	2301      	movs	r3, #1
- 8000be8:	9301      	str	r3, [sp, #4]
-	while(counter--);
- 8000bea:	9b01      	ldr	r3, [sp, #4]
- 8000bec:	1e5a      	subs	r2, r3, #1
- 8000bee:	9201      	str	r2, [sp, #4]
- 8000bf0:	2b00      	cmp	r3, #0
- 8000bf2:	d1fa      	bne.n	8000bea <CommsN64Console_GetContollerInputs+0x56>
-	COMMS_N64_STOP_PORT->BSRR = COMMS_N64_STOP_SET;
- 8000bf4:	2320      	movs	r3, #32
- 8000bf6:	61bb      	str	r3, [r7, #24]
-	USART1->CR1 |= USART_CR1_RE;
- 8000bf8:	68e3      	ldr	r3, [r4, #12]
- 8000bfa:	f043 0304 	orr.w	r3, r3, #4
- 8000bfe:	60e3      	str	r3, [r4, #12]
-	while(!(USART1->SR & USART_SR_RXNE)){};
- 8000c00:	6823      	ldr	r3, [r4, #0]
- 8000c02:	f013 0f20 	tst.w	r3, #32
- 8000c06:	d0fb      	beq.n	8000c00 <CommsN64Console_GetContollerInputs+0x6c>
-	controllerResponse[0] = USART1->DR;
- 8000c08:	6863      	ldr	r3, [r4, #4]
- 8000c0a:	702b      	strb	r3, [r5, #0]
+ 8000c1e:	4b53      	ldr	r3, [pc, #332]	; (8000d6c <CommsN64Console_GetContollerInputs+0x1d8>)
+ 8000c20:	685a      	ldr	r2, [r3, #4]
+ 8000c22:	4b54      	ldr	r3, [pc, #336]	; (8000d74 <CommsN64Console_GetContollerInputs+0x1e0>)
+ 8000c24:	701a      	strb	r2, [r3, #0]
 
 	// Grab states for Z and START
 	while(!(USART1->SR & USART_SR_RXNE)){};
- 8000c0c:	6823      	ldr	r3, [r4, #0]
- 8000c0e:	f013 0f20 	tst.w	r3, #32
- 8000c12:	d0fb      	beq.n	8000c0c <CommsN64Console_GetContollerInputs+0x78>
+ 8000c26:	4a51      	ldr	r2, [pc, #324]	; (8000d6c <CommsN64Console_GetContollerInputs+0x1d8>)
+ 8000c28:	6813      	ldr	r3, [r2, #0]
+ 8000c2a:	f013 0f20 	tst.w	r3, #32
+ 8000c2e:	d0fb      	beq.n	8000c28 <CommsN64Console_GetContollerInputs+0x94>
 	controllerResponse[1] = USART1->DR;
- 8000c14:	6863      	ldr	r3, [r4, #4]
- 8000c16:	706b      	strb	r3, [r5, #1]
+ 8000c30:	4b4e      	ldr	r3, [pc, #312]	; (8000d6c <CommsN64Console_GetContollerInputs+0x1d8>)
+ 8000c32:	685a      	ldr	r2, [r3, #4]
+ 8000c34:	4b4f      	ldr	r3, [pc, #316]	; (8000d74 <CommsN64Console_GetContollerInputs+0x1e0>)
+ 8000c36:	705a      	strb	r2, [r3, #1]
 
 	// Grab states for DU and DD
 	while(!(USART1->SR & USART_SR_RXNE)){};
- 8000c18:	6823      	ldr	r3, [r4, #0]
- 8000c1a:	f013 0f20 	tst.w	r3, #32
- 8000c1e:	d0fb      	beq.n	8000c18 <CommsN64Console_GetContollerInputs+0x84>
+ 8000c38:	4a4c      	ldr	r2, [pc, #304]	; (8000d6c <CommsN64Console_GetContollerInputs+0x1d8>)
+ 8000c3a:	6813      	ldr	r3, [r2, #0]
+ 8000c3c:	f013 0f20 	tst.w	r3, #32
+ 8000c40:	d0fb      	beq.n	8000c3a <CommsN64Console_GetContollerInputs+0xa6>
 	controllerResponse[2] = USART1->DR;
- 8000c20:	6863      	ldr	r3, [r4, #4]
- 8000c22:	70ab      	strb	r3, [r5, #2]
+ 8000c42:	4b4a      	ldr	r3, [pc, #296]	; (8000d6c <CommsN64Console_GetContollerInputs+0x1d8>)
+ 8000c44:	685a      	ldr	r2, [r3, #4]
+ 8000c46:	4b4b      	ldr	r3, [pc, #300]	; (8000d74 <CommsN64Console_GetContollerInputs+0x1e0>)
+ 8000c48:	709a      	strb	r2, [r3, #2]
 
 	// Grab states for DL and DR
 	while(!(USART1->SR & USART_SR_RXNE)){};
- 8000c24:	6823      	ldr	r3, [r4, #0]
- 8000c26:	f013 0f20 	tst.w	r3, #32
- 8000c2a:	d0fb      	beq.n	8000c24 <CommsN64Console_GetContollerInputs+0x90>
+ 8000c4a:	4a48      	ldr	r2, [pc, #288]	; (8000d6c <CommsN64Console_GetContollerInputs+0x1d8>)
+ 8000c4c:	6813      	ldr	r3, [r2, #0]
+ 8000c4e:	f013 0f20 	tst.w	r3, #32
+ 8000c52:	d0fb      	beq.n	8000c4c <CommsN64Console_GetContollerInputs+0xb8>
 	controllerResponse[3] = USART1->DR;
- 8000c2c:	6863      	ldr	r3, [r4, #4]
- 8000c2e:	70eb      	strb	r3, [r5, #3]
+ 8000c54:	4b45      	ldr	r3, [pc, #276]	; (8000d6c <CommsN64Console_GetContollerInputs+0x1d8>)
+ 8000c56:	685a      	ldr	r2, [r3, #4]
+ 8000c58:	4b46      	ldr	r3, [pc, #280]	; (8000d74 <CommsN64Console_GetContollerInputs+0x1e0>)
+ 8000c5a:	70da      	strb	r2, [r3, #3]
 
 	// Grab states for RESET and RESERVED
 	while(!(USART1->SR & USART_SR_RXNE)){};
- 8000c30:	6823      	ldr	r3, [r4, #0]
- 8000c32:	f013 0f20 	tst.w	r3, #32
- 8000c36:	d0fb      	beq.n	8000c30 <CommsN64Console_GetContollerInputs+0x9c>
+ 8000c5c:	4a43      	ldr	r2, [pc, #268]	; (8000d6c <CommsN64Console_GetContollerInputs+0x1d8>)
+ 8000c5e:	6813      	ldr	r3, [r2, #0]
+ 8000c60:	f013 0f20 	tst.w	r3, #32
+ 8000c64:	d0fb      	beq.n	8000c5e <CommsN64Console_GetContollerInputs+0xca>
 	controllerResponse[4] = USART1->DR;
- 8000c38:	6863      	ldr	r3, [r4, #4]
- 8000c3a:	712b      	strb	r3, [r5, #4]
+ 8000c66:	4b41      	ldr	r3, [pc, #260]	; (8000d6c <CommsN64Console_GetContollerInputs+0x1d8>)
+ 8000c68:	685a      	ldr	r2, [r3, #4]
+ 8000c6a:	4b42      	ldr	r3, [pc, #264]	; (8000d74 <CommsN64Console_GetContollerInputs+0x1e0>)
+ 8000c6c:	711a      	strb	r2, [r3, #4]
 
 	// Grab states for L and R
 	while(!(USART1->SR & USART_SR_RXNE)){};
- 8000c3c:	6823      	ldr	r3, [r4, #0]
- 8000c3e:	f013 0f20 	tst.w	r3, #32
- 8000c42:	d0fb      	beq.n	8000c3c <CommsN64Console_GetContollerInputs+0xa8>
+ 8000c6e:	4a3f      	ldr	r2, [pc, #252]	; (8000d6c <CommsN64Console_GetContollerInputs+0x1d8>)
+ 8000c70:	6813      	ldr	r3, [r2, #0]
+ 8000c72:	f013 0f20 	tst.w	r3, #32
+ 8000c76:	d0fb      	beq.n	8000c70 <CommsN64Console_GetContollerInputs+0xdc>
 	controllerResponse[5] = USART1->DR;
- 8000c44:	6863      	ldr	r3, [r4, #4]
- 8000c46:	716b      	strb	r3, [r5, #5]
+ 8000c78:	4b3c      	ldr	r3, [pc, #240]	; (8000d6c <CommsN64Console_GetContollerInputs+0x1d8>)
+ 8000c7a:	685a      	ldr	r2, [r3, #4]
+ 8000c7c:	4b3d      	ldr	r3, [pc, #244]	; (8000d74 <CommsN64Console_GetContollerInputs+0x1e0>)
+ 8000c7e:	715a      	strb	r2, [r3, #5]
 
 	// Grab states for CU and CD
 	while(!(USART1->SR & USART_SR_RXNE)){};
- 8000c48:	6823      	ldr	r3, [r4, #0]
- 8000c4a:	f013 0f20 	tst.w	r3, #32
- 8000c4e:	d0fb      	beq.n	8000c48 <CommsN64Console_GetContollerInputs+0xb4>
+ 8000c80:	4a3a      	ldr	r2, [pc, #232]	; (8000d6c <CommsN64Console_GetContollerInputs+0x1d8>)
+ 8000c82:	6813      	ldr	r3, [r2, #0]
+ 8000c84:	f013 0f20 	tst.w	r3, #32
+ 8000c88:	d0fb      	beq.n	8000c82 <CommsN64Console_GetContollerInputs+0xee>
 	controllerResponse[6] = USART1->DR;
- 8000c50:	6863      	ldr	r3, [r4, #4]
- 8000c52:	71ab      	strb	r3, [r5, #6]
+ 8000c8a:	4b38      	ldr	r3, [pc, #224]	; (8000d6c <CommsN64Console_GetContollerInputs+0x1d8>)
+ 8000c8c:	685a      	ldr	r2, [r3, #4]
+ 8000c8e:	4b39      	ldr	r3, [pc, #228]	; (8000d74 <CommsN64Console_GetContollerInputs+0x1e0>)
+ 8000c90:	719a      	strb	r2, [r3, #6]
 
 	// Grab states for CL and CR
 	while(!(USART1->SR & USART_SR_RXNE)){};
- 8000c54:	6823      	ldr	r3, [r4, #0]
- 8000c56:	f013 0f20 	tst.w	r3, #32
- 8000c5a:	d0fb      	beq.n	8000c54 <CommsN64Console_GetContollerInputs+0xc0>
+ 8000c92:	4a36      	ldr	r2, [pc, #216]	; (8000d6c <CommsN64Console_GetContollerInputs+0x1d8>)
+ 8000c94:	6813      	ldr	r3, [r2, #0]
+ 8000c96:	f013 0f20 	tst.w	r3, #32
+ 8000c9a:	d0fb      	beq.n	8000c94 <CommsN64Console_GetContollerInputs+0x100>
 	controllerResponse[7] = USART1->DR;
- 8000c5c:	6863      	ldr	r3, [r4, #4]
- 8000c5e:	71eb      	strb	r3, [r5, #7]
+ 8000c9c:	4b33      	ldr	r3, [pc, #204]	; (8000d6c <CommsN64Console_GetContollerInputs+0x1d8>)
+ 8000c9e:	685a      	ldr	r2, [r3, #4]
+ 8000ca0:	4b34      	ldr	r3, [pc, #208]	; (8000d74 <CommsN64Console_GetContollerInputs+0x1e0>)
+ 8000ca2:	71da      	strb	r2, [r3, #7]
 
 	// Grab states for X-AXIS BIT7 & BIT6
 	while(!(USART1->SR & USART_SR_RXNE)){};
- 8000c60:	6823      	ldr	r3, [r4, #0]
- 8000c62:	f013 0f20 	tst.w	r3, #32
- 8000c66:	d0fb      	beq.n	8000c60 <CommsN64Console_GetContollerInputs+0xcc>
+ 8000ca4:	4a31      	ldr	r2, [pc, #196]	; (8000d6c <CommsN64Console_GetContollerInputs+0x1d8>)
+ 8000ca6:	6813      	ldr	r3, [r2, #0]
+ 8000ca8:	f013 0f20 	tst.w	r3, #32
+ 8000cac:	d0fb      	beq.n	8000ca6 <CommsN64Console_GetContollerInputs+0x112>
 	controllerResponse[8] = USART1->DR;
- 8000c68:	6863      	ldr	r3, [r4, #4]
- 8000c6a:	722b      	strb	r3, [r5, #8]
+ 8000cae:	4b2f      	ldr	r3, [pc, #188]	; (8000d6c <CommsN64Console_GetContollerInputs+0x1d8>)
+ 8000cb0:	685a      	ldr	r2, [r3, #4]
+ 8000cb2:	4b30      	ldr	r3, [pc, #192]	; (8000d74 <CommsN64Console_GetContollerInputs+0x1e0>)
+ 8000cb4:	721a      	strb	r2, [r3, #8]
 
 	// Grab states for X-AXIS BIT5 & BIT4
 	while(!(USART1->SR & USART_SR_RXNE)){};
- 8000c6c:	6823      	ldr	r3, [r4, #0]
- 8000c6e:	f013 0f20 	tst.w	r3, #32
- 8000c72:	d0fb      	beq.n	8000c6c <CommsN64Console_GetContollerInputs+0xd8>
+ 8000cb6:	4a2d      	ldr	r2, [pc, #180]	; (8000d6c <CommsN64Console_GetContollerInputs+0x1d8>)
+ 8000cb8:	6813      	ldr	r3, [r2, #0]
+ 8000cba:	f013 0f20 	tst.w	r3, #32
+ 8000cbe:	d0fb      	beq.n	8000cb8 <CommsN64Console_GetContollerInputs+0x124>
 	controllerResponse[9] = USART1->DR;
- 8000c74:	6863      	ldr	r3, [r4, #4]
- 8000c76:	726b      	strb	r3, [r5, #9]
+ 8000cc0:	4b2a      	ldr	r3, [pc, #168]	; (8000d6c <CommsN64Console_GetContollerInputs+0x1d8>)
+ 8000cc2:	685a      	ldr	r2, [r3, #4]
+ 8000cc4:	4b2b      	ldr	r3, [pc, #172]	; (8000d74 <CommsN64Console_GetContollerInputs+0x1e0>)
+ 8000cc6:	725a      	strb	r2, [r3, #9]
 
 	// Grab states for X-AXIS BIT3 & BIT2
 	while(!(USART1->SR & USART_SR_RXNE)){};
- 8000c78:	6823      	ldr	r3, [r4, #0]
- 8000c7a:	f013 0f20 	tst.w	r3, #32
- 8000c7e:	d0fb      	beq.n	8000c78 <CommsN64Console_GetContollerInputs+0xe4>
+ 8000cc8:	4a28      	ldr	r2, [pc, #160]	; (8000d6c <CommsN64Console_GetContollerInputs+0x1d8>)
+ 8000cca:	6813      	ldr	r3, [r2, #0]
+ 8000ccc:	f013 0f20 	tst.w	r3, #32
+ 8000cd0:	d0fb      	beq.n	8000cca <CommsN64Console_GetContollerInputs+0x136>
 	controllerResponse[10] = USART1->DR;
- 8000c80:	6863      	ldr	r3, [r4, #4]
- 8000c82:	72ab      	strb	r3, [r5, #10]
-
+ 8000cd2:	4b26      	ldr	r3, [pc, #152]	; (8000d6c <CommsN64Console_GetContollerInputs+0x1d8>)
+ 8000cd4:	685a      	ldr	r2, [r3, #4]
+ 8000cd6:	4b27      	ldr	r3, [pc, #156]	; (8000d74 <CommsN64Console_GetContollerInputs+0x1e0>)
+ 8000cd8:	729a      	strb	r2, [r3, #10]
 	// Grab states for X-AXIS BIT1 & BIT0
 	while(!(USART1->SR & USART_SR_RXNE)){};
- 8000c84:	6823      	ldr	r3, [r4, #0]
- 8000c86:	f013 0f20 	tst.w	r3, #32
- 8000c8a:	d0fb      	beq.n	8000c84 <CommsN64Console_GetContollerInputs+0xf0>
+ 8000cda:	4a24      	ldr	r2, [pc, #144]	; (8000d6c <CommsN64Console_GetContollerInputs+0x1d8>)
+ 8000cdc:	6813      	ldr	r3, [r2, #0]
+ 8000cde:	f013 0f20 	tst.w	r3, #32
+ 8000ce2:	d0fb      	beq.n	8000cdc <CommsN64Console_GetContollerInputs+0x148>
 	controllerResponse[11] = USART1->DR;
- 8000c8c:	6863      	ldr	r3, [r4, #4]
- 8000c8e:	72eb      	strb	r3, [r5, #11]
+ 8000ce4:	4b21      	ldr	r3, [pc, #132]	; (8000d6c <CommsN64Console_GetContollerInputs+0x1d8>)
+ 8000ce6:	685a      	ldr	r2, [r3, #4]
+ 8000ce8:	4b22      	ldr	r3, [pc, #136]	; (8000d74 <CommsN64Console_GetContollerInputs+0x1e0>)
+ 8000cea:	72da      	strb	r2, [r3, #11]
 
+	// Grab states for Y-AXIS BIT7 & BIT6
+	while(!(USART1->SR & USART_SR_RXNE)){};
+ 8000cec:	4a1f      	ldr	r2, [pc, #124]	; (8000d6c <CommsN64Console_GetContollerInputs+0x1d8>)
+ 8000cee:	6813      	ldr	r3, [r2, #0]
+ 8000cf0:	f013 0f20 	tst.w	r3, #32
+ 8000cf4:	d0fb      	beq.n	8000cee <CommsN64Console_GetContollerInputs+0x15a>
+	controllerResponse[12] = USART1->DR;
+ 8000cf6:	4b1d      	ldr	r3, [pc, #116]	; (8000d6c <CommsN64Console_GetContollerInputs+0x1d8>)
+ 8000cf8:	685a      	ldr	r2, [r3, #4]
+ 8000cfa:	4b1e      	ldr	r3, [pc, #120]	; (8000d74 <CommsN64Console_GetContollerInputs+0x1e0>)
+ 8000cfc:	731a      	strb	r2, [r3, #12]
+
+	// Grab states for Y-AXIS BIT5 & BIT4
+	while(!(USART1->SR & USART_SR_RXNE)){};
+ 8000cfe:	4a1b      	ldr	r2, [pc, #108]	; (8000d6c <CommsN64Console_GetContollerInputs+0x1d8>)
+ 8000d00:	6813      	ldr	r3, [r2, #0]
+ 8000d02:	f013 0f20 	tst.w	r3, #32
+ 8000d06:	d0fb      	beq.n	8000d00 <CommsN64Console_GetContollerInputs+0x16c>
+	controllerResponse[13] = USART1->DR;
+ 8000d08:	4b18      	ldr	r3, [pc, #96]	; (8000d6c <CommsN64Console_GetContollerInputs+0x1d8>)
+ 8000d0a:	685a      	ldr	r2, [r3, #4]
+ 8000d0c:	4b19      	ldr	r3, [pc, #100]	; (8000d74 <CommsN64Console_GetContollerInputs+0x1e0>)
+ 8000d0e:	735a      	strb	r2, [r3, #13]
+
+	// Grab states for Y-AXIS BIT3 & BIT2
+	while(!(USART1->SR & USART_SR_RXNE)){};
+ 8000d10:	4a16      	ldr	r2, [pc, #88]	; (8000d6c <CommsN64Console_GetContollerInputs+0x1d8>)
+ 8000d12:	6813      	ldr	r3, [r2, #0]
+ 8000d14:	f013 0f20 	tst.w	r3, #32
+ 8000d18:	d0fb      	beq.n	8000d12 <CommsN64Console_GetContollerInputs+0x17e>
+	controllerResponse[14] = USART1->DR;
+ 8000d1a:	4b14      	ldr	r3, [pc, #80]	; (8000d6c <CommsN64Console_GetContollerInputs+0x1d8>)
+ 8000d1c:	685a      	ldr	r2, [r3, #4]
+ 8000d1e:	4b15      	ldr	r3, [pc, #84]	; (8000d74 <CommsN64Console_GetContollerInputs+0x1e0>)
+ 8000d20:	739a      	strb	r2, [r3, #14]
+
+	// Grab states for Y-AXIS BIT1 & BIT0
+	while(!(USART1->SR & USART_SR_RXNE)){};
+ 8000d22:	4a12      	ldr	r2, [pc, #72]	; (8000d6c <CommsN64Console_GetContollerInputs+0x1d8>)
+ 8000d24:	6813      	ldr	r3, [r2, #0]
+ 8000d26:	f013 0f20 	tst.w	r3, #32
+ 8000d2a:	d0fb      	beq.n	8000d24 <CommsN64Console_GetContollerInputs+0x190>
+	controllerResponse[15] = USART1->DR;
+ 8000d2c:	4b0f      	ldr	r3, [pc, #60]	; (8000d6c <CommsN64Console_GetContollerInputs+0x1d8>)
+ 8000d2e:	6859      	ldr	r1, [r3, #4]
+ 8000d30:	4a10      	ldr	r2, [pc, #64]	; (8000d74 <CommsN64Console_GetContollerInputs+0x1e0>)
+ 8000d32:	73d1      	strb	r1, [r2, #15]
+
+	// Disable the receiver
 	USART1->CR1 &= ~USART_CR1_RE;
- 8000c90:	68e3      	ldr	r3, [r4, #12]
- 8000c92:	f023 0304 	bic.w	r3, r3, #4
- 8000c96:	60e3      	str	r3, [r4, #12]
+ 8000d34:	68da      	ldr	r2, [r3, #12]
+ 8000d36:	f022 0204 	bic.w	r2, r2, #4
+ 8000d3a:	60da      	str	r2, [r3, #12]
+
 	HAL_Delay(2);
- 8000c98:	2002      	movs	r0, #2
- 8000c9a:	f7ff fc71 	bl	8000580 <HAL_Delay>
+ 8000d3c:	2002      	movs	r0, #2
+ 8000d3e:	f7ff fc1f 	bl	8000580 <HAL_Delay>
 	while(!(USART1->SR & USART_SR_TXE)){};
- 8000c9e:	6823      	ldr	r3, [r4, #0]
- 8000ca0:	f013 0f80 	tst.w	r3, #128	; 0x80
- 8000ca4:	d0fb      	beq.n	8000c9e <CommsN64Console_GetContollerInputs+0x10a>
-	USART1->DR = (controllerResponse[14] & 0xFF);
- 8000ca6:	7bab      	ldrb	r3, [r5, #14]
- 8000ca8:	6063      	str	r3, [r4, #4]
+ 8000d42:	4a0a      	ldr	r2, [pc, #40]	; (8000d6c <CommsN64Console_GetContollerInputs+0x1d8>)
+ 8000d44:	6813      	ldr	r3, [r2, #0]
+ 8000d46:	f013 0f80 	tst.w	r3, #128	; 0x80
+ 8000d4a:	d0fb      	beq.n	8000d44 <CommsN64Console_GetContollerInputs+0x1b0>
+	USART1->DR = (controllerResponse[0] & 0xFF);
+ 8000d4c:	4b09      	ldr	r3, [pc, #36]	; (8000d74 <CommsN64Console_GetContollerInputs+0x1e0>)
+ 8000d4e:	781a      	ldrb	r2, [r3, #0]
+ 8000d50:	4b06      	ldr	r3, [pc, #24]	; (8000d6c <CommsN64Console_GetContollerInputs+0x1d8>)
+ 8000d52:	605a      	str	r2, [r3, #4]
 	while(!(USART1->SR & USART_SR_TC)){};
- 8000caa:	6823      	ldr	r3, [r4, #0]
- 8000cac:	f013 0f40 	tst.w	r3, #64	; 0x40
- 8000cb0:	d0fb      	beq.n	8000caa <CommsN64Console_GetContollerInputs+0x116>
+ 8000d54:	461a      	mov	r2, r3
+ 8000d56:	6813      	ldr	r3, [r2, #0]
+ 8000d58:	f013 0f40 	tst.w	r3, #64	; 0x40
+ 8000d5c:	d0fb      	beq.n	8000d56 <CommsN64Console_GetContollerInputs+0x1c2>
 	HAL_Delay(5);
- 8000cb2:	2005      	movs	r0, #5
- 8000cb4:	f7ff fc64 	bl	8000580 <HAL_Delay>
-	USART1->CR1 &= ~USART_CR1_RE;
- 8000cb8:	e776      	b.n	8000ba8 <CommsN64Console_GetContollerInputs+0x14>
- 8000cba:	bf00      	nop
- 8000cbc:	40011000 	.word	0x40011000
- 8000cc0:	40020400 	.word	0x40020400
- 8000cc4:	20000028 	.word	0x20000028
+ 8000d5e:	2005      	movs	r0, #5
+ 8000d60:	f7ff fc0e 	bl	8000580 <HAL_Delay>
+}
+ 8000d64:	b003      	add	sp, #12
+ 8000d66:	f85d fb04 	ldr.w	pc, [sp], #4
+ 8000d6a:	bf00      	nop
+ 8000d6c:	40011000 	.word	0x40011000
+ 8000d70:	40020400 	.word	0x40020400
+ 8000d74:	20000028 	.word	0x20000028
 
-08000cc8 <SysTick_Handler>:
+08000d78 <SysTick_Handler>:
 	HAL_GPIO_WritePin(BLUE_LED_PORT, BLUE_LED_PIN_HAL, pinState);
 }
 
 // Misc
 void SysTick_Handler(void)
 {
- 8000cc8:	b508      	push	{r3, lr}
+ 8000d78:	b508      	push	{r3, lr}
 	HAL_IncTick();
- 8000cca:	f7ff fc47 	bl	800055c <HAL_IncTick>
+ 8000d7a:	f7ff fbef 	bl	800055c <HAL_IncTick>
 }
- 8000cce:	bd08      	pop	{r3, pc}
+ 8000d7e:	bd08      	pop	{r3, pc}
 
-08000cd0 <Main_Init>:
+08000d80 <Main_Init>:
 
 // Initializer
 void Main_Init()
 {
- 8000cd0:	b500      	push	{lr}
- 8000cd2:	b089      	sub	sp, #36	; 0x24
+ 8000d80:	b500      	push	{lr}
+ 8000d82:	b089      	sub	sp, #36	; 0x24
 	/* GPIO Ports Clock Enable */
 	__HAL_RCC_GPIOH_CLK_ENABLE();
- 8000cd4:	2200      	movs	r2, #0
- 8000cd6:	9200      	str	r2, [sp, #0]
- 8000cd8:	4b16      	ldr	r3, [pc, #88]	; (8000d34 <Main_Init+0x64>)
- 8000cda:	6b19      	ldr	r1, [r3, #48]	; 0x30
- 8000cdc:	f041 0180 	orr.w	r1, r1, #128	; 0x80
- 8000ce0:	6319      	str	r1, [r3, #48]	; 0x30
- 8000ce2:	6b19      	ldr	r1, [r3, #48]	; 0x30
- 8000ce4:	f001 0180 	and.w	r1, r1, #128	; 0x80
- 8000ce8:	9100      	str	r1, [sp, #0]
- 8000cea:	9900      	ldr	r1, [sp, #0]
+ 8000d84:	2200      	movs	r2, #0
+ 8000d86:	9200      	str	r2, [sp, #0]
+ 8000d88:	4b16      	ldr	r3, [pc, #88]	; (8000de4 <Main_Init+0x64>)
+ 8000d8a:	6b19      	ldr	r1, [r3, #48]	; 0x30
+ 8000d8c:	f041 0180 	orr.w	r1, r1, #128	; 0x80
+ 8000d90:	6319      	str	r1, [r3, #48]	; 0x30
+ 8000d92:	6b19      	ldr	r1, [r3, #48]	; 0x30
+ 8000d94:	f001 0180 	and.w	r1, r1, #128	; 0x80
+ 8000d98:	9100      	str	r1, [sp, #0]
+ 8000d9a:	9900      	ldr	r1, [sp, #0]
 	__HAL_RCC_GPIOA_CLK_ENABLE();
- 8000cec:	9201      	str	r2, [sp, #4]
- 8000cee:	6b19      	ldr	r1, [r3, #48]	; 0x30
- 8000cf0:	f041 0101 	orr.w	r1, r1, #1
- 8000cf4:	6319      	str	r1, [r3, #48]	; 0x30
- 8000cf6:	6b19      	ldr	r1, [r3, #48]	; 0x30
- 8000cf8:	f001 0101 	and.w	r1, r1, #1
- 8000cfc:	9101      	str	r1, [sp, #4]
- 8000cfe:	9901      	ldr	r1, [sp, #4]
+ 8000d9c:	9201      	str	r2, [sp, #4]
+ 8000d9e:	6b19      	ldr	r1, [r3, #48]	; 0x30
+ 8000da0:	f041 0101 	orr.w	r1, r1, #1
+ 8000da4:	6319      	str	r1, [r3, #48]	; 0x30
+ 8000da6:	6b19      	ldr	r1, [r3, #48]	; 0x30
+ 8000da8:	f001 0101 	and.w	r1, r1, #1
+ 8000dac:	9101      	str	r1, [sp, #4]
+ 8000dae:	9901      	ldr	r1, [sp, #4]
 
 	GPIO_InitTypeDef GPIO_InitStruct_Main = {0};
- 8000d00:	9205      	str	r2, [sp, #20]
- 8000d02:	9206      	str	r2, [sp, #24]
- 8000d04:	9207      	str	r2, [sp, #28]
+ 8000db0:	9205      	str	r2, [sp, #20]
+ 8000db2:	9206      	str	r2, [sp, #24]
+ 8000db4:	9207      	str	r2, [sp, #28]
 	GPIO_InitStruct_Main.Speed = GPIO_SPEED_FREQ_LOW;
 	GPIO_InitStruct_Main.Alternate = GPIO_AF0_MCO;
 	//HAL_GPIO_Init(GPIOA, &GPIO_InitStruct_Main);
 
 	/* Initialize the blue led */
 	__HAL_RCC_GPIOC_CLK_ENABLE();
- 8000d06:	9202      	str	r2, [sp, #8]
- 8000d08:	6b1a      	ldr	r2, [r3, #48]	; 0x30
- 8000d0a:	f042 0204 	orr.w	r2, r2, #4
- 8000d0e:	631a      	str	r2, [r3, #48]	; 0x30
- 8000d10:	6b1b      	ldr	r3, [r3, #48]	; 0x30
- 8000d12:	f003 0304 	and.w	r3, r3, #4
- 8000d16:	9302      	str	r3, [sp, #8]
- 8000d18:	9b02      	ldr	r3, [sp, #8]
+ 8000db6:	9202      	str	r2, [sp, #8]
+ 8000db8:	6b1a      	ldr	r2, [r3, #48]	; 0x30
+ 8000dba:	f042 0204 	orr.w	r2, r2, #4
+ 8000dbe:	631a      	str	r2, [r3, #48]	; 0x30
+ 8000dc0:	6b1b      	ldr	r3, [r3, #48]	; 0x30
+ 8000dc2:	f003 0304 	and.w	r3, r3, #4
+ 8000dc6:	9302      	str	r3, [sp, #8]
+ 8000dc8:	9b02      	ldr	r3, [sp, #8]
 
 	GPIO_InitStruct_Main.Pin = BLUE_LED_PIN_HAL;
- 8000d1a:	f44f 5300 	mov.w	r3, #8192	; 0x2000
- 8000d1e:	9303      	str	r3, [sp, #12]
+ 8000dca:	f44f 5300 	mov.w	r3, #8192	; 0x2000
+ 8000dce:	9303      	str	r3, [sp, #12]
 	GPIO_InitStruct_Main.Mode = GPIO_MODE_OUTPUT_PP;
- 8000d20:	2301      	movs	r3, #1
- 8000d22:	9304      	str	r3, [sp, #16]
+ 8000dd0:	2301      	movs	r3, #1
+ 8000dd2:	9304      	str	r3, [sp, #16]
 	GPIO_InitStruct_Main.Pull = GPIO_NOPULL;
 	GPIO_InitStruct_Main.Speed = GPIO_SPEED_FREQ_LOW;
 
 	HAL_GPIO_Init(BLUE_LED_PORT, &GPIO_InitStruct_Main);
- 8000d24:	a903      	add	r1, sp, #12
- 8000d26:	4804      	ldr	r0, [pc, #16]	; (8000d38 <Main_Init+0x68>)
- 8000d28:	f7ff fc98 	bl	800065c <HAL_GPIO_Init>
+ 8000dd4:	a903      	add	r1, sp, #12
+ 8000dd6:	4804      	ldr	r0, [pc, #16]	; (8000de8 <Main_Init+0x68>)
+ 8000dd8:	f7ff fc40 	bl	800065c <HAL_GPIO_Init>
 }
- 8000d2c:	b009      	add	sp, #36	; 0x24
- 8000d2e:	f85d fb04 	ldr.w	pc, [sp], #4
- 8000d32:	bf00      	nop
- 8000d34:	40023800 	.word	0x40023800
- 8000d38:	40020800 	.word	0x40020800
+ 8000ddc:	b009      	add	sp, #36	; 0x24
+ 8000dde:	f85d fb04 	ldr.w	pc, [sp], #4
+ 8000de2:	bf00      	nop
+ 8000de4:	40023800 	.word	0x40023800
+ 8000de8:	40020800 	.word	0x40020800
 
-08000d3c <SystemClock_Config>:
+08000dec <SystemClock_Config>:
 /**
   * @brief System Clock Configuration
   * @retval None
   */
 void SystemClock_Config(void)
 {
- 8000d3c:	b500      	push	{lr}
- 8000d3e:	b083      	sub	sp, #12
+ 8000dec:	b500      	push	{lr}
+ 8000dee:	b083      	sub	sp, #12
   RCC_OscInitTypeDef RCC_OscInitStruct = {0};
   RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
 
   /** Configure the main internal regulator output voltage
   */
   __HAL_RCC_PWR_CLK_ENABLE();
- 8000d40:	2000      	movs	r0, #0
- 8000d42:	9000      	str	r0, [sp, #0]
- 8000d44:	4b0d      	ldr	r3, [pc, #52]	; (8000d7c <SystemClock_Config+0x40>)
- 8000d46:	6c1a      	ldr	r2, [r3, #64]	; 0x40
- 8000d48:	f042 5280 	orr.w	r2, r2, #268435456	; 0x10000000
- 8000d4c:	641a      	str	r2, [r3, #64]	; 0x40
- 8000d4e:	6c1b      	ldr	r3, [r3, #64]	; 0x40
- 8000d50:	f003 5380 	and.w	r3, r3, #268435456	; 0x10000000
- 8000d54:	9300      	str	r3, [sp, #0]
- 8000d56:	9b00      	ldr	r3, [sp, #0]
+ 8000df0:	2000      	movs	r0, #0
+ 8000df2:	9000      	str	r0, [sp, #0]
+ 8000df4:	4b0d      	ldr	r3, [pc, #52]	; (8000e2c <SystemClock_Config+0x40>)
+ 8000df6:	6c1a      	ldr	r2, [r3, #64]	; 0x40
+ 8000df8:	f042 5280 	orr.w	r2, r2, #268435456	; 0x10000000
+ 8000dfc:	641a      	str	r2, [r3, #64]	; 0x40
+ 8000dfe:	6c1b      	ldr	r3, [r3, #64]	; 0x40
+ 8000e00:	f003 5380 	and.w	r3, r3, #268435456	; 0x10000000
+ 8000e04:	9300      	str	r3, [sp, #0]
+ 8000e06:	9b00      	ldr	r3, [sp, #0]
   __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE1);
- 8000d58:	9001      	str	r0, [sp, #4]
- 8000d5a:	4b09      	ldr	r3, [pc, #36]	; (8000d80 <SystemClock_Config+0x44>)
- 8000d5c:	681a      	ldr	r2, [r3, #0]
- 8000d5e:	f442 4240 	orr.w	r2, r2, #49152	; 0xc000
- 8000d62:	601a      	str	r2, [r3, #0]
- 8000d64:	681b      	ldr	r3, [r3, #0]
- 8000d66:	f403 4340 	and.w	r3, r3, #49152	; 0xc000
- 8000d6a:	9301      	str	r3, [sp, #4]
- 8000d6c:	9b01      	ldr	r3, [sp, #4]
+ 8000e08:	9001      	str	r0, [sp, #4]
+ 8000e0a:	4b09      	ldr	r3, [pc, #36]	; (8000e30 <SystemClock_Config+0x44>)
+ 8000e0c:	681a      	ldr	r2, [r3, #0]
+ 8000e0e:	f442 4240 	orr.w	r2, r2, #49152	; 0xc000
+ 8000e12:	601a      	str	r2, [r3, #0]
+ 8000e14:	681b      	ldr	r3, [r3, #0]
+ 8000e16:	f403 4340 	and.w	r3, r3, #49152	; 0xc000
+ 8000e1a:	9301      	str	r3, [sp, #4]
+ 8000e1c:	9b01      	ldr	r3, [sp, #4]
 
 //  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_3) != HAL_OK)
 //  {
 //    Error_Handler();
 //  }
   HAL_RCC_MCOConfig(RCC_MCO1, RCC_MCO1SOURCE_HSI, RCC_MCODIV_1);
- 8000d6e:	4602      	mov	r2, r0
- 8000d70:	4601      	mov	r1, r0
- 8000d72:	f7ff fd69 	bl	8000848 <HAL_RCC_MCOConfig>
+ 8000e1e:	4602      	mov	r2, r0
+ 8000e20:	4601      	mov	r1, r0
+ 8000e22:	f7ff fd11 	bl	8000848 <HAL_RCC_MCOConfig>
 }
- 8000d76:	b003      	add	sp, #12
- 8000d78:	f85d fb04 	ldr.w	pc, [sp], #4
- 8000d7c:	40023800 	.word	0x40023800
- 8000d80:	40007000 	.word	0x40007000
+ 8000e26:	b003      	add	sp, #12
+ 8000e28:	f85d fb04 	ldr.w	pc, [sp], #4
+ 8000e2c:	40023800 	.word	0x40023800
+ 8000e30:	40007000 	.word	0x40007000
 
-08000d84 <main>:
+08000e34 <main>:
 {
- 8000d84:	b508      	push	{r3, lr}
+ 8000e34:	b500      	push	{lr}
+ 8000e36:	b083      	sub	sp, #12
 	HAL_Init();
- 8000d86:	f7ff fbcf 	bl	8000528 <HAL_Init>
+ 8000e38:	f7ff fb76 	bl	8000528 <HAL_Init>
 	SystemClock_Config();
- 8000d8a:	f7ff ffd7 	bl	8000d3c <SystemClock_Config>
+ 8000e3c:	f7ff ffd6 	bl	8000dec <SystemClock_Config>
 	CommsN64Console_Init();
- 8000d8e:	f7ff fe8f 	bl	8000ab0 <CommsN64Console_Init>
+ 8000e40:	f7ff fe36 	bl	8000ab0 <CommsN64Console_Init>
 	Main_Init();
- 8000d92:	f7ff ff9d 	bl	8000cd0 <Main_Init>
+ 8000e44:	f7ff ff9c 	bl	8000d80 <Main_Init>
 	CommsN64Console_SetPullup(N64_PULLUP);
- 8000d96:	2001      	movs	r0, #1
- 8000d98:	f7ff fee4 	bl	8000b64 <CommsN64Console_SetPullup>
+ 8000e48:	2001      	movs	r0, #1
+ 8000e4a:	f7ff fe8b 	bl	8000b64 <CommsN64Console_SetPullup>
 	HAL_Delay(100);
- 8000d9c:	2064      	movs	r0, #100	; 0x64
- 8000d9e:	f7ff fbef 	bl	8000580 <HAL_Delay>
+ 8000e4e:	2064      	movs	r0, #100	; 0x64
+ 8000e50:	f7ff fb96 	bl	8000580 <HAL_Delay>
+    	volatile uint32_t counter = 200;
+ 8000e54:	24c8      	movs	r4, #200	; 0xc8
+ 8000e56:	9401      	str	r4, [sp, #4]
+    	while(counter--);
+ 8000e58:	9b01      	ldr	r3, [sp, #4]
+ 8000e5a:	1e5a      	subs	r2, r3, #1
+ 8000e5c:	9201      	str	r2, [sp, #4]
+ 8000e5e:	2b00      	cmp	r3, #0
+ 8000e60:	d1fa      	bne.n	8000e58 <main+0x24>
     	CommsN64Console_GetContollerInputs();
- 8000da2:	f7ff fef7 	bl	8000b94 <CommsN64Console_GetContollerInputs>
- 8000da6:	e7fc      	b.n	8000da2 <main+0x1e>
+ 8000e62:	f7ff fe97 	bl	8000b94 <CommsN64Console_GetContollerInputs>
+    {
+ 8000e66:	e7f6      	b.n	8000e56 <main+0x22>
 
-08000da8 <Reset_Handler>:
+08000e68 <Reset_Handler>:
 
   .section .text.Reset_Handler
   .weak Reset_Handler
   .type Reset_Handler, %function
 Reset_Handler:
   ldr   r0, =_estack
- 8000da8:	480d      	ldr	r0, [pc, #52]	; (8000de0 <LoopForever+0x2>)
+ 8000e68:	480d      	ldr	r0, [pc, #52]	; (8000ea0 <LoopForever+0x2>)
   mov   sp, r0          /* set stack pointer */
- 8000daa:	4685      	mov	sp, r0
+ 8000e6a:	4685      	mov	sp, r0
 /* Call the clock system intitialization function.*/
   bl  SystemInit
- 8000dac:	f3af 8000 	nop.w
+ 8000e6c:	f3af 8000 	nop.w
 
 /* Copy the data segment initializers from flash to SRAM */
   ldr r0, =_sdata
- 8000db0:	480c      	ldr	r0, [pc, #48]	; (8000de4 <LoopForever+0x6>)
+ 8000e70:	480c      	ldr	r0, [pc, #48]	; (8000ea4 <LoopForever+0x6>)
   ldr r1, =_edata
- 8000db2:	490d      	ldr	r1, [pc, #52]	; (8000de8 <LoopForever+0xa>)
+ 8000e72:	490d      	ldr	r1, [pc, #52]	; (8000ea8 <LoopForever+0xa>)
   ldr r2, =_sidata
- 8000db4:	4a0d      	ldr	r2, [pc, #52]	; (8000dec <LoopForever+0xe>)
+ 8000e74:	4a0d      	ldr	r2, [pc, #52]	; (8000eac <LoopForever+0xe>)
   movs r3, #0
- 8000db6:	2300      	movs	r3, #0
+ 8000e76:	2300      	movs	r3, #0
   b LoopCopyDataInit
- 8000db8:	e002      	b.n	8000dc0 <LoopCopyDataInit>
+ 8000e78:	e002      	b.n	8000e80 <LoopCopyDataInit>
 
-08000dba <CopyDataInit>:
+08000e7a <CopyDataInit>:
 
 CopyDataInit:
   ldr r4, [r2, r3]
- 8000dba:	58d4      	ldr	r4, [r2, r3]
+ 8000e7a:	58d4      	ldr	r4, [r2, r3]
   str r4, [r0, r3]
- 8000dbc:	50c4      	str	r4, [r0, r3]
+ 8000e7c:	50c4      	str	r4, [r0, r3]
   adds r3, r3, #4
- 8000dbe:	3304      	adds	r3, #4
+ 8000e7e:	3304      	adds	r3, #4
 
-08000dc0 <LoopCopyDataInit>:
+08000e80 <LoopCopyDataInit>:
 
 LoopCopyDataInit:
   adds r4, r0, r3
- 8000dc0:	18c4      	adds	r4, r0, r3
+ 8000e80:	18c4      	adds	r4, r0, r3
   cmp r4, r1
- 8000dc2:	428c      	cmp	r4, r1
+ 8000e82:	428c      	cmp	r4, r1
   bcc CopyDataInit
- 8000dc4:	d3f9      	bcc.n	8000dba <CopyDataInit>
+ 8000e84:	d3f9      	bcc.n	8000e7a <CopyDataInit>
 
 /* Zero fill the bss segment. */
   ldr r2, =_sbss
- 8000dc6:	4a0a      	ldr	r2, [pc, #40]	; (8000df0 <LoopForever+0x12>)
+ 8000e86:	4a0a      	ldr	r2, [pc, #40]	; (8000eb0 <LoopForever+0x12>)
   ldr r4, =_ebss
- 8000dc8:	4c0a      	ldr	r4, [pc, #40]	; (8000df4 <LoopForever+0x16>)
+ 8000e88:	4c0a      	ldr	r4, [pc, #40]	; (8000eb4 <LoopForever+0x16>)
   movs r3, #0
- 8000dca:	2300      	movs	r3, #0
+ 8000e8a:	2300      	movs	r3, #0
   b LoopFillZerobss
- 8000dcc:	e001      	b.n	8000dd2 <LoopFillZerobss>
+ 8000e8c:	e001      	b.n	8000e92 <LoopFillZerobss>
 
-08000dce <FillZerobss>:
+08000e8e <FillZerobss>:
 
 FillZerobss:
   str  r3, [r2]
- 8000dce:	6013      	str	r3, [r2, #0]
+ 8000e8e:	6013      	str	r3, [r2, #0]
   adds r2, r2, #4
- 8000dd0:	3204      	adds	r2, #4
+ 8000e90:	3204      	adds	r2, #4
 
-08000dd2 <LoopFillZerobss>:
+08000e92 <LoopFillZerobss>:
 
 LoopFillZerobss:
   cmp r2, r4
- 8000dd2:	42a2      	cmp	r2, r4
+ 8000e92:	42a2      	cmp	r2, r4
   bcc FillZerobss
- 8000dd4:	d3fb      	bcc.n	8000dce <FillZerobss>
+ 8000e94:	d3fb      	bcc.n	8000e8e <FillZerobss>
 
 /* Call static constructors */
   bl __libc_init_array
- 8000dd6:	f000 f811 	bl	8000dfc <__libc_init_array>
+ 8000e96:	f000 f811 	bl	8000ebc <__libc_init_array>
 /* Call the application's entry point.*/
   bl main
- 8000dda:	f7ff ffd3 	bl	8000d84 <main>
+ 8000e9a:	f7ff ffcb 	bl	8000e34 <main>
 
-08000dde <LoopForever>:
+08000e9e <LoopForever>:
 
 LoopForever:
     b LoopForever
- 8000dde:	e7fe      	b.n	8000dde <LoopForever>
+ 8000e9e:	e7fe      	b.n	8000e9e <LoopForever>
   ldr   r0, =_estack
- 8000de0:	20020000 	.word	0x20020000
+ 8000ea0:	20020000 	.word	0x20020000
   ldr r0, =_sdata
- 8000de4:	20000000 	.word	0x20000000
+ 8000ea4:	20000000 	.word	0x20000000
   ldr r1, =_edata
- 8000de8:	2000000c 	.word	0x2000000c
+ 8000ea8:	2000000c 	.word	0x2000000c
   ldr r2, =_sidata
- 8000dec:	08000e74 	.word	0x08000e74
+ 8000eac:	08000f34 	.word	0x08000f34
   ldr r2, =_sbss
- 8000df0:	2000000c 	.word	0x2000000c
+ 8000eb0:	2000000c 	.word	0x2000000c
   ldr r4, =_ebss
- 8000df4:	20000080 	.word	0x20000080
+ 8000eb4:	20000080 	.word	0x20000080
 
-08000df8 <ADC_IRQHandler>:
+08000eb8 <ADC_IRQHandler>:
  * @retval : None
 */
   .section .text.Default_Handler,"ax",%progbits
 Default_Handler:
 Infinite_Loop:
   b Infinite_Loop
- 8000df8:	e7fe      	b.n	8000df8 <ADC_IRQHandler>
+ 8000eb8:	e7fe      	b.n	8000eb8 <ADC_IRQHandler>
 	...
 
-08000dfc <__libc_init_array>:
- 8000dfc:	b570      	push	{r4, r5, r6, lr}
- 8000dfe:	4e0d      	ldr	r6, [pc, #52]	; (8000e34 <__libc_init_array+0x38>)
- 8000e00:	4c0d      	ldr	r4, [pc, #52]	; (8000e38 <__libc_init_array+0x3c>)
- 8000e02:	1ba4      	subs	r4, r4, r6
- 8000e04:	10a4      	asrs	r4, r4, #2
- 8000e06:	2500      	movs	r5, #0
- 8000e08:	42a5      	cmp	r5, r4
- 8000e0a:	d109      	bne.n	8000e20 <__libc_init_array+0x24>
- 8000e0c:	4e0b      	ldr	r6, [pc, #44]	; (8000e3c <__libc_init_array+0x40>)
- 8000e0e:	4c0c      	ldr	r4, [pc, #48]	; (8000e40 <__libc_init_array+0x44>)
- 8000e10:	f000 f818 	bl	8000e44 <_init>
- 8000e14:	1ba4      	subs	r4, r4, r6
- 8000e16:	10a4      	asrs	r4, r4, #2
- 8000e18:	2500      	movs	r5, #0
- 8000e1a:	42a5      	cmp	r5, r4
- 8000e1c:	d105      	bne.n	8000e2a <__libc_init_array+0x2e>
- 8000e1e:	bd70      	pop	{r4, r5, r6, pc}
- 8000e20:	f856 3025 	ldr.w	r3, [r6, r5, lsl #2]
- 8000e24:	4798      	blx	r3
- 8000e26:	3501      	adds	r5, #1
- 8000e28:	e7ee      	b.n	8000e08 <__libc_init_array+0xc>
- 8000e2a:	f856 3025 	ldr.w	r3, [r6, r5, lsl #2]
- 8000e2e:	4798      	blx	r3
- 8000e30:	3501      	adds	r5, #1
- 8000e32:	e7f2      	b.n	8000e1a <__libc_init_array+0x1e>
- 8000e34:	08000e6c 	.word	0x08000e6c
- 8000e38:	08000e6c 	.word	0x08000e6c
- 8000e3c:	08000e6c 	.word	0x08000e6c
- 8000e40:	08000e70 	.word	0x08000e70
+08000ebc <__libc_init_array>:
+ 8000ebc:	b570      	push	{r4, r5, r6, lr}
+ 8000ebe:	4e0d      	ldr	r6, [pc, #52]	; (8000ef4 <__libc_init_array+0x38>)
+ 8000ec0:	4c0d      	ldr	r4, [pc, #52]	; (8000ef8 <__libc_init_array+0x3c>)
+ 8000ec2:	1ba4      	subs	r4, r4, r6
+ 8000ec4:	10a4      	asrs	r4, r4, #2
+ 8000ec6:	2500      	movs	r5, #0
+ 8000ec8:	42a5      	cmp	r5, r4
+ 8000eca:	d109      	bne.n	8000ee0 <__libc_init_array+0x24>
+ 8000ecc:	4e0b      	ldr	r6, [pc, #44]	; (8000efc <__libc_init_array+0x40>)
+ 8000ece:	4c0c      	ldr	r4, [pc, #48]	; (8000f00 <__libc_init_array+0x44>)
+ 8000ed0:	f000 f818 	bl	8000f04 <_init>
+ 8000ed4:	1ba4      	subs	r4, r4, r6
+ 8000ed6:	10a4      	asrs	r4, r4, #2
+ 8000ed8:	2500      	movs	r5, #0
+ 8000eda:	42a5      	cmp	r5, r4
+ 8000edc:	d105      	bne.n	8000eea <__libc_init_array+0x2e>
+ 8000ede:	bd70      	pop	{r4, r5, r6, pc}
+ 8000ee0:	f856 3025 	ldr.w	r3, [r6, r5, lsl #2]
+ 8000ee4:	4798      	blx	r3
+ 8000ee6:	3501      	adds	r5, #1
+ 8000ee8:	e7ee      	b.n	8000ec8 <__libc_init_array+0xc>
+ 8000eea:	f856 3025 	ldr.w	r3, [r6, r5, lsl #2]
+ 8000eee:	4798      	blx	r3
+ 8000ef0:	3501      	adds	r5, #1
+ 8000ef2:	e7f2      	b.n	8000eda <__libc_init_array+0x1e>
+ 8000ef4:	08000f2c 	.word	0x08000f2c
+ 8000ef8:	08000f2c 	.word	0x08000f2c
+ 8000efc:	08000f2c 	.word	0x08000f2c
+ 8000f00:	08000f30 	.word	0x08000f30
 
-08000e44 <_init>:
- 8000e44:	b5f8      	push	{r3, r4, r5, r6, r7, lr}
- 8000e46:	bf00      	nop
- 8000e48:	bcf8      	pop	{r3, r4, r5, r6, r7}
- 8000e4a:	bc08      	pop	{r3}
- 8000e4c:	469e      	mov	lr, r3
- 8000e4e:	4770      	bx	lr
+08000f04 <_init>:
+ 8000f04:	b5f8      	push	{r3, r4, r5, r6, r7, lr}
+ 8000f06:	bf00      	nop
+ 8000f08:	bcf8      	pop	{r3, r4, r5, r6, r7}
+ 8000f0a:	bc08      	pop	{r3}
+ 8000f0c:	469e      	mov	lr, r3
+ 8000f0e:	4770      	bx	lr
 
-08000e50 <_fini>:
- 8000e50:	b5f8      	push	{r3, r4, r5, r6, r7, lr}
- 8000e52:	bf00      	nop
- 8000e54:	bcf8      	pop	{r3, r4, r5, r6, r7}
- 8000e56:	bc08      	pop	{r3}
- 8000e58:	469e      	mov	lr, r3
- 8000e5a:	4770      	bx	lr
+08000f10 <_fini>:
+ 8000f10:	b5f8      	push	{r3, r4, r5, r6, r7, lr}
+ 8000f12:	bf00      	nop
+ 8000f14:	bcf8      	pop	{r3, r4, r5, r6, r7}
+ 8000f16:	bc08      	pop	{r3}
+ 8000f18:	469e      	mov	lr, r3
+ 8000f1a:	4770      	bx	lr
