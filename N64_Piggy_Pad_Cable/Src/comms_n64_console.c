@@ -73,6 +73,267 @@ void CommsN64Console_SendStopBit()
 	COMMS_N64_STOP_PORT->BSRR = COMMS_N64_STOP_SET;
 }
 
+// Parsers
+void CommsN64Console_ParseContollerInputs()
+{
+	// Reset controllerRegisters array
+	controllerRegisters[0] = 0;
+	controllerRegisters[1] = 0;
+	controllerRegisters[2] = 0;
+	controllerRegisters[3] = 0;
+
+	// Helper variables
+	uint8_t leftBit;
+	uint8_t rightBit;
+
+	/* TODO: Improve the algorithm below. It was made just to ensure functionality
+	 * but it ought to be better coded.
+	 */
+	// Update n64 register, byte 1
+	for(uint8_t j = 0; j < 4; j = j + 1)
+	{
+		// Choose "left" and "right" bits
+		switch(j)
+		{
+			case 0:
+				leftBit = 7;
+				rightBit = 6;
+				break;
+
+			case 1:
+				leftBit = 5;
+				rightBit = 4;
+				break;
+
+			case 2:
+				leftBit = 3;
+				rightBit = 2;
+				break;
+
+			case 3:
+				leftBit = 1;
+				rightBit = 0;
+				break;
+
+			default:
+				break;
+		}
+
+		// Manipulate the chosen bits
+		if( (controllerResponse[j] == UART_BYTE_2_N64_BITS_00_CASE1) ||
+			(controllerResponse[j] == UART_BYTE_2_N64_BITS_00_CASE2)	)
+		{
+			controllerRegisters[0] &= ~(1 << leftBit);
+			controllerRegisters[0] &= ~(1 << rightBit);
+		}
+		if( (controllerResponse[j] == UART_BYTE_2_N64_BITS_01_CASE1) ||
+			(controllerResponse[j] == UART_BYTE_2_N64_BITS_01_CASE2)	)
+		{
+			controllerRegisters[0] &= ~(1 << leftBit);
+			controllerRegisters[0] |= (1 << rightBit);
+		}
+		if( (controllerResponse[j] == UART_BYTE_2_N64_BITS_10_CASE1) ||
+			(controllerResponse[j] == UART_BYTE_2_N64_BITS_10_CASE2)	)
+		{
+			controllerRegisters[0] |= (1 << leftBit);
+			controllerRegisters[0] &= ~(1 << rightBit);
+		}
+		if( (controllerResponse[j] == UART_BYTE_2_N64_BITS_11_CASE1) ||
+			(controllerResponse[j] == UART_BYTE_2_N64_BITS_11_CASE2)	)
+		{
+			controllerRegisters[0] |= (1 << leftBit);
+			controllerRegisters[0] |= (1 << rightBit);
+		}
+	}
+
+	// Update n64 register, byte 2
+	for(uint8_t j = 4; j < 8; j = j + 1)
+	{
+		// Choose "left" and "right" bits
+		switch(j)
+		{
+			case 4:
+				leftBit = 7;
+				rightBit = 6;
+				break;
+
+			case 5:
+				leftBit = 5;
+				rightBit = 4;
+				break;
+
+			case 6:
+				leftBit = 3;
+				rightBit = 2;
+				break;
+
+			case 7:
+				leftBit = 1;
+				rightBit = 0;
+				break;
+
+			default:
+				break;
+		}
+
+		// Manipulate the chosen bits
+		if( (controllerResponse[j] == UART_BYTE_2_N64_BITS_00_CASE1) ||
+			(controllerResponse[j] == UART_BYTE_2_N64_BITS_00_CASE2)	)
+		{
+			controllerRegisters[1] &= ~(1 << leftBit);
+			controllerRegisters[1] &= ~(1 << rightBit);
+		}
+		if( (controllerResponse[j] == UART_BYTE_2_N64_BITS_01_CASE1) ||
+			(controllerResponse[j] == UART_BYTE_2_N64_BITS_01_CASE2)	)
+		{
+			controllerRegisters[1] &= ~(1 << leftBit);
+			controllerRegisters[1] |= (1 << rightBit);
+		}
+		if( (controllerResponse[j] == UART_BYTE_2_N64_BITS_10_CASE1) ||
+			(controllerResponse[j] == UART_BYTE_2_N64_BITS_10_CASE2)	)
+		{
+			controllerRegisters[1] |= (1 << leftBit);
+			controllerRegisters[1] &= ~(1 << rightBit);
+		}
+		if( (controllerResponse[j] == UART_BYTE_2_N64_BITS_11_CASE1) ||
+			(controllerResponse[j] == UART_BYTE_2_N64_BITS_11_CASE2)	)
+		{
+			controllerRegisters[1] |= (1 << leftBit);
+			controllerRegisters[1] |= (1 << rightBit);
+		}
+	}
+
+	// Update n64 register, byte 3
+	for(uint8_t j = 8; j < 12; j = j + 1)
+	{
+		// Choose "left" and "right" bits
+		switch(j)
+		{
+			case 8:
+				leftBit = 7;
+				rightBit = 6;
+				break;
+
+			case 9:
+				leftBit = 5;
+				rightBit = 4;
+				break;
+
+			case 10:
+				leftBit = 3;
+				rightBit = 2;
+				break;
+
+			case 11:
+				leftBit = 1;
+				rightBit = 0;
+				break;
+
+			default:
+				break;
+		}
+
+		// Manipulate the chosen bits
+		if( (controllerResponse[j] == UART_BYTE_2_N64_BITS_00_CASE1) ||
+			(controllerResponse[j] == UART_BYTE_2_N64_BITS_00_CASE2)	)
+		{
+			controllerRegisters[2] &= ~(1 << leftBit);
+			controllerRegisters[2] &= ~(1 << rightBit);
+		}
+		if( (controllerResponse[j] == UART_BYTE_2_N64_BITS_01_CASE1) ||
+			(controllerResponse[j] == UART_BYTE_2_N64_BITS_01_CASE2)	)
+		{
+			controllerRegisters[2] &= ~(1 << leftBit);
+			controllerRegisters[2] |= (1 << rightBit);
+		}
+		if( (controllerResponse[j] == UART_BYTE_2_N64_BITS_10_CASE1) ||
+			(controllerResponse[j] == UART_BYTE_2_N64_BITS_10_CASE2)	)
+		{
+			controllerRegisters[2] |= (1 << leftBit);
+			controllerRegisters[2] &= ~(1 << rightBit);
+		}
+		if( (controllerResponse[j] == UART_BYTE_2_N64_BITS_11_CASE1) ||
+			(controllerResponse[j] == UART_BYTE_2_N64_BITS_11_CASE2)	)
+		{
+			controllerRegisters[2] |= (1 << leftBit);
+			controllerRegisters[2] |= (1 << rightBit);
+		}
+	}
+
+	// Update n64 register, byte 4
+	for(uint8_t j = 12; j < 16; j = j + 1)
+	{
+		// Choose "left" and "right" bits
+		switch(j)
+		{
+			case 12:
+				leftBit = 7;
+				rightBit = 6;
+				break;
+
+			case 13:
+				leftBit = 5;
+				rightBit = 4;
+				break;
+
+			case 14:
+				leftBit = 3;
+				rightBit = 2;
+				break;
+
+			case 15:
+				leftBit = 1;
+				rightBit = 0;
+				break;
+
+			default:
+				break;
+		}
+
+		// Manipulate the chosen bits
+		if( (controllerResponse[j] == UART_BYTE_2_N64_BITS_00_CASE1) ||
+			(controllerResponse[j] == UART_BYTE_2_N64_BITS_00_CASE2)	)
+		{
+			controllerRegisters[3] &= ~(1 << leftBit);
+			controllerRegisters[3] &= ~(1 << rightBit);
+		}
+		if( (controllerResponse[j] == UART_BYTE_2_N64_BITS_01_CASE1) ||
+			(controllerResponse[j] == UART_BYTE_2_N64_BITS_01_CASE2)	)
+		{
+			controllerRegisters[3] &= ~(1 << leftBit);
+			controllerRegisters[3] |= (1 << rightBit);
+		}
+		if( (controllerResponse[j] == UART_BYTE_2_N64_BITS_10_CASE1) ||
+			(controllerResponse[j] == UART_BYTE_2_N64_BITS_10_CASE2)	)
+		{
+			controllerRegisters[3] |= (1 << leftBit);
+			controllerRegisters[3] &= ~(1 << rightBit);
+		}
+		if( (controllerResponse[j] == UART_BYTE_2_N64_BITS_11_CASE1) ||
+			(controllerResponse[j] == UART_BYTE_2_N64_BITS_11_CASE2)	)
+		{
+			controllerRegisters[3] |= (1 << leftBit);
+			controllerRegisters[3] |= (1 << rightBit);
+		}
+	}
+
+	HAL_Delay(1);
+	while(!(USART1->SR & USART_SR_TXE)){};
+	USART1->DR = (controllerRegisters[3] & 0xFF);
+	while(!(USART1->SR & USART_SR_TC)){};
+	HAL_Delay(1);
+
+	if(controllerRegisters[0] > 1 || controllerRegisters[1] > 1 ||
+	   controllerRegisters[2] > 1 || controllerRegisters[3] > 1   )
+	{
+		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, GPIO_PIN_RESET);
+	}
+	else
+	{
+		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, GPIO_PIN_SET);
+	}
+}
+
 void CommsN64Console_GetContollerStatus()
 {
 	// Future implementation
@@ -196,9 +457,10 @@ void CommsN64Console_GetContollerInputs()
 	// Disable the receiver
 	USART1->CR1 &= ~USART_CR1_RE;
 
-	HAL_Delay(2);
-	while(!(USART1->SR & USART_SR_TXE)){};
-	USART1->DR = (controllerResponse[0] & 0xFF);
-	while(!(USART1->SR & USART_SR_TC)){};
-	HAL_Delay(5);
+//	// Debuging code for logic analyzer
+//	HAL_Delay(2);
+//	while(!(USART1->SR & USART_SR_TXE)){};
+//	USART1->DR = (controllerResponse[0] & 0xFF);
+//	while(!(USART1->SR & USART_SR_TC)){};
+//	HAL_Delay(5);
 }

@@ -23,6 +23,9 @@ int main(void)
 
     	// Poll for n64 controller state
     	CommsN64Console_GetContollerInputs();
+
+    	// Parse inputs from controller
+    	CommsN64Console_ParseContollerInputs();
     }
 }
 
@@ -63,6 +66,9 @@ void Main_Init()
 	GPIO_InitStruct_Main.Speed = GPIO_SPEED_FREQ_LOW;
 
 	HAL_GPIO_Init(BLUE_LED_PORT, &GPIO_InitStruct_Main);
+
+	/* Keep the blue LED off */
+	Main_SetBlueLed(BLUE_LED_OFF);
 }
 
 /**
