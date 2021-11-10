@@ -1,0 +1,43 @@
+#ifndef MAIN_H_
+#define MAIN_H_
+
+#include <stdint.h>
+#include "stm32f4xx_hal.h"
+#include "io_mapping_stm32f411ce_blackpill_weactstudio_v3_0.h"
+#include "comms_n64_console.h"
+
+// Private enums
+static GPIO_PinState BLUE_LED_ON = GPIO_PIN_RESET;
+static GPIO_PinState BLUE_LED_OFF = GPIO_PIN_SET;
+
+// Private variables
+/* Structure of MSI upper byte
+ *  BIT #: 7 | 6    | 5      | 4     | 3  | 2    | 1     | 0
+ * BUTTON: 1 | HOME | SELECT | START | UP | DOWN | RIGHT | LEFT
+ *    N64: 1 | Z    | 0      | START | DU | DD   | DR    | DL
+ */
+static uint8_t registerMSIupper;
+
+/* Structure of MSI upper byte
+ *  BIT #: 7  | 6  | 5  | 4  | 3  | 2  | 1  | 0
+ * BUTTON: 4K | 3K | 2K | 1K | 4P | 3P | 2P | 1P
+ *    N64: L  | CR | CD | A  | R  | CU | CL | B
+ */
+static uint8_t registerMSIlower;
+
+/* Structure of SSI
+ *  BIT #: 7  | 6  | 5     | 4     | 3    | 2  | RS| 0
+ * BUTTON: R3 | L3 | TPKEY | TBKEY | LOCK | DP | RIGHT | LEFT
+ */
+static uint8_t registerSSI;
+
+// Initializer
+void Main_Init(void);
+
+// Setters
+void Main_SetBlueLed(GPIO_PinState);
+
+// Misc
+void SystemClock_Config(void);
+
+#endif

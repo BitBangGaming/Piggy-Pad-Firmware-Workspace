@@ -27,30 +27,15 @@ int main(void)
     	// Parse inputs from controller
     	CommsN64Console_ParseContollerInputs();
 
-    	// Debuging code for logic analyzer
-    	HAL_Delay(2);
-    	while(!(USART1->SR & USART_SR_TXE)){};
-    	USART1->DR = (controllerRegisters[0] & 0xFF);
-    	while(!(USART1->SR & USART_SR_TC)){};
-    	HAL_Delay(2);
+    	// Update registers for BBG control board
+    	Main_SetRegisters();
 
-    	HAL_Delay(2);
-    	while(!(USART1->SR & USART_SR_TXE)){};
-    	USART1->DR = (controllerRegisters[1] & 0xFF);
-    	while(!(USART1->SR & USART_SR_TC)){};
-    	HAL_Delay(2);
-
-    	HAL_Delay(2);
-    	while(!(USART1->SR & USART_SR_TXE)){};
-    	USART1->DR = (controllerRegisters[2] & 0xFF);
-    	while(!(USART1->SR & USART_SR_TC)){};
-    	HAL_Delay(2);
-
-    	HAL_Delay(2);
-    	while(!(USART1->SR & USART_SR_TXE)){};
-    	USART1->DR = (controllerRegisters[3] & 0xFF);
-    	while(!(USART1->SR & USART_SR_TC)){};
-    	HAL_Delay(2);
+    	// Send registers to BBG control board
+		HAL_Delay(2);
+		while(!(USART1->SR & USART_SR_TXE)){};
+		USART1->DR = (registerMSIlower & 0xFF);
+		while(!(USART1->SR & USART_SR_TC)){};
+		HAL_Delay(2);
     }
 }
 
@@ -60,10 +45,171 @@ void Main_SetBlueLed(GPIO_PinState pinState)
 	HAL_GPIO_WritePin(BLUE_LED_PORT, BLUE_LED_PIN_HAL, pinState);
 }
 
-// Misc
-void SysTick_Handler(void)
+void Main_SetRegisters()
 {
-	HAL_IncTick();
+	// Helper variable
+	uint8_t bitState;
+
+	/* Update the MSI upper byte register */
+	// BIT7
+	registerMSIupper |= (1 << MSI_UPPER_BIT7);
+
+	// HOME
+	bitState = (controllerRegisters[0] >> N64_BYTE1_Z) & (0x01);
+	if(bitState == 0x01)
+	{
+		registerMSIupper &= ~(1 << MSI_UPPER_HOME);
+	}
+	else
+	{
+		registerMSIupper |= (1 << MSI_UPPER_HOME);
+	}
+
+	// SELECT
+	registerMSIupper &= ~(1 << MSI_UPPER_SELECT);
+
+	// START
+	bitState = (controllerRegisters[0] >> N64_BYTE1_START) & (0x01);
+	if(bitState == 0x01)
+	{
+		registerMSIupper &= ~(1 << MSI_UPPER_START);
+	}
+	else
+	{
+		registerMSIupper |= (1 << MSI_UPPER_START);
+	}
+
+	// UP
+	bitState = (controllerRegisters[0] >> N64_BYTE1_DU) & (0x01);
+	if(bitState == 0x01)
+	{
+		registerMSIupper &= ~(1 << MSI_UPPER_UP);
+	}
+	else
+	{
+		registerMSIupper |= (1 << MSI_UPPER_UP);
+	}
+
+	// DOWN
+	bitState = (controllerRegisters[0] >> N64_BYTE1_DD) & (0x01);
+	if(bitState == 0x01)
+	{
+		registerMSIupper &= ~(1 << MSI_UPPER_DOWN);
+	}
+	else
+	{
+		registerMSIupper |= (1 << MSI_UPPER_DOWN);
+	}
+
+	// RIGHT
+	bitState = (controllerRegisters[0] >> N64_BYTE1_DR) & (0x01);
+	if(bitState == 0x01)
+	{
+		registerMSIupper &= ~(1 << MSI_UPPER_RIGHT);
+	}
+	else
+	{
+		registerMSIupper |= (1 << MSI_UPPER_RIGHT);
+	}
+
+	// LEFT
+	bitState = (controllerRegisters[0] >> N64_BYTE1_DL) & (0x01);
+	if(bitState == 0x01)
+	{
+		registerMSIupper &= ~(1 << MSI_UPPER_LEFT);
+	}
+	else
+	{
+		registerMSIupper |= (1 << MSI_UPPER_LEFT);
+	}
+
+	// 4K
+	bitState = (controllerRegisters[1] >> N64_BYTE2_L) & (0x01);
+	if(bitState == 0x01)
+	{
+		registerMSIlower &= ~(1 << MSI_LOWER_4K);
+	}
+	else
+	{
+		registerMSIlower |= (1 << MSI_LOWER_4K);
+	}
+
+	// 3K
+	bitState = (controllerRegisters[1] >> N64_BYTE2_CR) & (0x01);
+	if(bitState == 0x01)
+	{
+		registerMSIlower &= ~(1 << MSI_LOWER_3K);
+	}
+	else
+	{
+		registerMSIlower |= (1 << MSI_LOWER_3K);
+	}
+
+	// 2K
+	bitState = (controllerRegisters[1] >> N64_BYTE2_CD) & (0x01);
+	if(bitState == 0x01)
+	{
+		registerMSIlower &= ~(1 << MSI_LOWER_2K);
+	}
+	else
+	{
+		registerMSIlower |= (1 << MSI_LOWER_2K);
+	}
+
+	// 1K
+	bitState = (controllerRegisters[0] >> N64_BYTE1_A) & (0x01);
+	if(bitState == 0x01)
+	{
+		registerMSIlower &= ~(1 << MSI_LOWER_1K);
+	}
+	else
+	{
+		registerMSIlower |= (1 << MSI_LOWER_1K);
+	}
+
+	// 4P
+	bitState = (controllerRegisters[1] >> N64_BYTE2_R) & (0x01);
+	if(bitState == 0x01)
+	{
+		registerMSIlower &= ~(1 << MSI_LOWER_4P);
+	}
+	else
+	{
+		registerMSIlower |= (1 << MSI_LOWER_4P);
+	}
+
+	// 3P
+	bitState = (controllerRegisters[1] >> N64_BYTE2_CU) & (0x01);
+	if(bitState == 0x01)
+	{
+		registerMSIlower &= ~(1 << MSI_LOWER_3P);
+	}
+	else
+	{
+		registerMSIlower |= (1 << MSI_LOWER_3P);
+	}
+
+	// 2P
+	bitState = (controllerRegisters[1] >> N64_BYTE2_CL) & (0x01);
+	if(bitState == 0x01)
+	{
+		registerMSIlower &= ~(1 << MSI_LOWER_2P);
+	}
+	else
+	{
+		registerMSIlower |= (1 << MSI_LOWER_2P);
+	}
+
+	// 1P
+	bitState = (controllerRegisters[0] >> N64_BYTE1_B) & (0x01);
+	if(bitState == 0x01)
+	{
+		registerMSIlower &= ~(1 << MSI_LOWER_1P);
+	}
+	else
+	{
+		registerMSIlower |= (1 << MSI_LOWER_1P);
+	}
 }
 
 // Initializer
@@ -80,6 +226,9 @@ void Main_Init()
 	GPIO_InitStruct_Main.Pull = GPIO_NOPULL;
 	GPIO_InitStruct_Main.Speed = GPIO_SPEED_FREQ_LOW;
 	GPIO_InitStruct_Main.Alternate = GPIO_AF0_MCO;
+	/* Only enable below if you want to check the clock
+	 * frequency.
+	 */
 	//HAL_GPIO_Init(GPIOA, &GPIO_InitStruct_Main);
 
 	/* Initialize the blue led */
@@ -92,8 +241,8 @@ void Main_Init()
 
 	HAL_GPIO_Init(BLUE_LED_PORT, &GPIO_InitStruct_Main);
 
-	/* Keep the blue LED off */
-	Main_SetBlueLed(BLUE_LED_OFF);
+	/* Keep the blue LED on to show the program is running. */
+	Main_SetBlueLed(BLUE_LED_ON);
 }
 
 /**

@@ -6,6 +6,49 @@
 #include "io_mapping_stm32f411ce_blackpill_weactstudio_v3_0.h"
 
 // Macros
+/* Byte order for N64 controller reponse */
+#define N64_A_B					0
+#define N64_Z_START				1
+#define N64_DU_DD				2
+#define N64_DL_DR				3
+#define N64_RESET_RESERVED		4
+#define N64_L_R					5
+#define N64_CU_CD				6
+#define N64_CL_CR				7
+#define N64_X_AXIS_BIT7_BIT6	8
+#define N64_X_AXIS_BIT5_BIT4	9
+#define N64_X_AXIS_BIT3_BIT2	10
+#define N64_X_AXIS_BIT1_BIT0	11
+#define N64_Y_AXIS_BIT7_BIT6	12
+#define N64_Y_AXIS_BIT5_BIT4	13
+#define N64_Y_AXIS_BIT3_BIT2	14
+#define N64_Y_AXIS_BIT1_BIT0	15
+
+/* Byte order for N64 controller registers */
+#define N64_BYTE1		0
+#define N64_BYTE2		1
+#define N64_BYTE3		2
+#define N64_BYTE4		3
+
+/* Bit positions for N64 controller registers */
+#define N64_BYTE1_DR		0
+#define N64_BYTE1_DL		1
+#define N64_BYTE1_DD		2
+#define N64_BYTE1_DU		3
+#define N64_BYTE1_START		4
+#define N64_BYTE1_Z			5
+#define N64_BYTE1_B			6
+#define N64_BYTE1_A			7
+
+#define N64_BYTE2_CR		0
+#define N64_BYTE2_CL		1
+#define N64_BYTE2_CD		2
+#define N64_BYTE2_CU		3
+#define N64_BYTE2_R			4
+#define N64_BYTE2_L			5
+#define N64_BYTE2_RESERVED	6
+#define N64_BYTE2_RESET		7
+
 /* The below macros help to translate a uart byte to n64 bits. For
  * example, when looking at the n64 controller as a device that has
  * built in registers, the structure will look as follows
@@ -83,9 +126,9 @@ static uint8_t controllerResponse[MAX_CONTROLLER_RESPONSE];
 /* The controllerRegisters array is the result after parsing the controllerResponse
  * array. Here is the n64 register structure for convenience:
  *
- *  BIT #: 7     | 6       | 5 | 4    | 3  | 2  | 1 | 0
- * BYTE 1: A     | B       | Z | START| DU | DD | DL| DR
- * BYTE 2: RESET | RESERVED| L | R    | CU | CD | CL| CR
+ *  BIT #: 7     | 6       | 5 | 4     | 3  | 2  | 1 | 0
+ * BYTE 1: A     | B       | Z | START | DU | DD | DL| DR
+ * BYTE 2: RESET | RESERVED| L | R     | CU | CD | CL| CR
  * BYTE 3:                  X AXIS
  * BYTE 4:                  Y AXIS
  *

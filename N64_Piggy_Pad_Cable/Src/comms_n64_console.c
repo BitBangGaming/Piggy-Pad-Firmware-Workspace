@@ -76,12 +76,6 @@ void CommsN64Console_SendStopBit()
 // Parsers
 void CommsN64Console_ParseContollerInputs()
 {
-	// Reset controllerRegisters array
-	controllerRegisters[0] = 0;
-	controllerRegisters[1] = 0;
-	controllerRegisters[2] = 0;
-	controllerRegisters[3] = 0;
-
 	// Helper variables
 	uint8_t leftBit = 0;
 	uint8_t rightBit = 0;
@@ -123,26 +117,26 @@ void CommsN64Console_ParseContollerInputs()
 		if( (controllerResponse[j] == UART_BYTE_2_N64_BITS_00_CASE1) ||
 			(controllerResponse[j] == UART_BYTE_2_N64_BITS_00_CASE2)	)
 		{
-			controllerRegisters[0] &= ~(1 << leftBit);
-			controllerRegisters[0] &= ~(1 << rightBit);
+			controllerRegisters[N64_BYTE1] &= ~(1 << leftBit);
+			controllerRegisters[N64_BYTE1] &= ~(1 << rightBit);
 		}
 		else if( (controllerResponse[j] == UART_BYTE_2_N64_BITS_01_CASE1) ||
 			     (controllerResponse[j] == UART_BYTE_2_N64_BITS_01_CASE2)	)
 		{
-			controllerRegisters[0] &= ~(1 << leftBit);
-			controllerRegisters[0] |= (1 << rightBit);
+			controllerRegisters[N64_BYTE1] &= ~(1 << leftBit);
+			controllerRegisters[N64_BYTE1] |= (1 << rightBit);
 		}
 		else if( (controllerResponse[j] == UART_BYTE_2_N64_BITS_10_CASE1) ||
 			     (controllerResponse[j] == UART_BYTE_2_N64_BITS_10_CASE2)	)
 		{
-			controllerRegisters[0] |= (1 << leftBit);
-			controllerRegisters[0] &= ~(1 << rightBit);
+			controllerRegisters[N64_BYTE1] |= (1 << leftBit);
+			controllerRegisters[N64_BYTE1] &= ~(1 << rightBit);
 		}
 		else if( (controllerResponse[j] == UART_BYTE_2_N64_BITS_11_CASE1) ||
 			     (controllerResponse[j] == UART_BYTE_2_N64_BITS_11_CASE2)	)
 		{
-			controllerRegisters[0] |= (1 << leftBit);
-			controllerRegisters[0] |= (1 << rightBit);
+			controllerRegisters[N64_BYTE1] |= (1 << leftBit);
+			controllerRegisters[N64_BYTE1] |= (1 << rightBit);
 		}
 		else
 		{
@@ -184,26 +178,26 @@ void CommsN64Console_ParseContollerInputs()
 		if( (controllerResponse[j] == UART_BYTE_2_N64_BITS_00_CASE1) ||
 			(controllerResponse[j] == UART_BYTE_2_N64_BITS_00_CASE2)	)
 		{
-			controllerRegisters[1] &= ~(1 << leftBit);
-			controllerRegisters[1] &= ~(1 << rightBit);
+			controllerRegisters[N64_BYTE2] &= ~(1 << leftBit);
+			controllerRegisters[N64_BYTE2] &= ~(1 << rightBit);
 		}
 		else if( (controllerResponse[j] == UART_BYTE_2_N64_BITS_01_CASE1) ||
 			     (controllerResponse[j] == UART_BYTE_2_N64_BITS_01_CASE2)	)
 		{
-			controllerRegisters[1] &= ~(1 << leftBit);
-			controllerRegisters[1] |= (1 << rightBit);
+			controllerRegisters[N64_BYTE2] &= ~(1 << leftBit);
+			controllerRegisters[N64_BYTE2] |= (1 << rightBit);
 		}
 		else if( (controllerResponse[j] == UART_BYTE_2_N64_BITS_10_CASE1) ||
 			     (controllerResponse[j] == UART_BYTE_2_N64_BITS_10_CASE2)	)
 		{
-			controllerRegisters[1] |= (1 << leftBit);
-			controllerRegisters[1] &= ~(1 << rightBit);
+			controllerRegisters[N64_BYTE2] |= (1 << leftBit);
+			controllerRegisters[N64_BYTE2] &= ~(1 << rightBit);
 		}
 		else if( (controllerResponse[j] == UART_BYTE_2_N64_BITS_11_CASE1) ||
 			     (controllerResponse[j] == UART_BYTE_2_N64_BITS_11_CASE2)	)
 		{
-			controllerRegisters[1] |= (1 << leftBit);
-			controllerRegisters[1] |= (1 << rightBit);
+			controllerRegisters[N64_BYTE2] |= (1 << leftBit);
+			controllerRegisters[N64_BYTE2] |= (1 << rightBit);
 		}
 		else
 		{
@@ -245,26 +239,26 @@ void CommsN64Console_ParseContollerInputs()
 		if( (controllerResponse[j] == UART_BYTE_2_N64_BITS_00_CASE1) ||
 			(controllerResponse[j] == UART_BYTE_2_N64_BITS_00_CASE2)	)
 		{
-			controllerRegisters[2] &= ~(1 << leftBit);
-			controllerRegisters[2] &= ~(1 << rightBit);
+			controllerRegisters[N64_BYTE3] &= ~(1 << leftBit);
+			controllerRegisters[N64_BYTE3] &= ~(1 << rightBit);
 		}
 		else if( (controllerResponse[j] == UART_BYTE_2_N64_BITS_01_CASE1) ||
 			     (controllerResponse[j] == UART_BYTE_2_N64_BITS_01_CASE2)	)
 		{
-			controllerRegisters[2] &= ~(1 << leftBit);
-			controllerRegisters[2] |= (1 << rightBit);
+			controllerRegisters[N64_BYTE3] &= ~(1 << leftBit);
+			controllerRegisters[N64_BYTE3] |= (1 << rightBit);
 		}
 		else if( (controllerResponse[j] == UART_BYTE_2_N64_BITS_10_CASE1) ||
 			     (controllerResponse[j] == UART_BYTE_2_N64_BITS_10_CASE2)	)
 		{
-			controllerRegisters[2] |= (1 << leftBit);
-			controllerRegisters[2] &= ~(1 << rightBit);
+			controllerRegisters[N64_BYTE3] |= (1 << leftBit);
+			controllerRegisters[N64_BYTE3] &= ~(1 << rightBit);
 		}
 		else if( (controllerResponse[j] == UART_BYTE_2_N64_BITS_11_CASE1) ||
 			     (controllerResponse[j] == UART_BYTE_2_N64_BITS_11_CASE2)	)
 		{
-			controllerRegisters[2] |= (1 << leftBit);
-			controllerRegisters[2] |= (1 << rightBit);
+			controllerRegisters[N64_BYTE3] |= (1 << leftBit);
+			controllerRegisters[N64_BYTE3] |= (1 << rightBit);
 		}
 		else
 		{
@@ -306,26 +300,26 @@ void CommsN64Console_ParseContollerInputs()
 		if( (controllerResponse[j] == UART_BYTE_2_N64_BITS_00_CASE1) ||
 			(controllerResponse[j] == UART_BYTE_2_N64_BITS_00_CASE2)	)
 		{
-			controllerRegisters[3] &= ~(1 << leftBit);
-			controllerRegisters[3] &= ~(1 << rightBit);
+			controllerRegisters[N64_BYTE4] &= ~(1 << leftBit);
+			controllerRegisters[N64_BYTE4] &= ~(1 << rightBit);
 		}
 		else if( (controllerResponse[j] == UART_BYTE_2_N64_BITS_01_CASE1) ||
 			     (controllerResponse[j] == UART_BYTE_2_N64_BITS_01_CASE2)	)
 		{
-			controllerRegisters[3] &= ~(1 << leftBit);
-			controllerRegisters[3] |= (1 << rightBit);
+			controllerRegisters[N64_BYTE4] &= ~(1 << leftBit);
+			controllerRegisters[N64_BYTE4] |= (1 << rightBit);
 		}
 		else if( (controllerResponse[j] == UART_BYTE_2_N64_BITS_10_CASE1) ||
 			     (controllerResponse[j] == UART_BYTE_2_N64_BITS_10_CASE2)	)
 		{
-			controllerRegisters[3] |= (1 << leftBit);
-			controllerRegisters[3] &= ~(1 << rightBit);
+			controllerRegisters[N64_BYTE4] |= (1 << leftBit);
+			controllerRegisters[N64_BYTE4] &= ~(1 << rightBit);
 		}
 		else if( (controllerResponse[j] == UART_BYTE_2_N64_BITS_11_CASE1) ||
 			     (controllerResponse[j] == UART_BYTE_2_N64_BITS_11_CASE2)	)
 		{
-			controllerRegisters[3] |= (1 << leftBit);
-			controllerRegisters[3] |= (1 << rightBit);
+			controllerRegisters[N64_BYTE4] |= (1 << leftBit);
+			controllerRegisters[N64_BYTE4] |= (1 << rightBit);
 		}
 		else
 		{
@@ -360,22 +354,22 @@ void CommsN64Console_GetContollerInputs()
 	// Make sure the transmit data register is empty before sending next byte
 	while(!(USART1->SR & USART_SR_TXE)){};
 	// Send a byte (2 n64 bits)
-	USART1->DR = (0x08 & 0xFF);
+	USART1->DR = (UART_BYTE_2_N64_BITS_00_CASE1 & 0xFF);
 
 	// Make sure the transmit data register is empty before sending a byte
 	while(!(USART1->SR & USART_SR_TXE)){};
 	// Send a byte (2 n64 bits)
-	USART1->DR = (0x08 & 0xFF);
+	USART1->DR = (UART_BYTE_2_N64_BITS_00_CASE1 & 0xFF);
 
 	// Make sure the transmit data register is empty before sending a byte
 	while(!(USART1->SR & USART_SR_TXE)){};
 	// Send a byte (2 n64 bits)
-	USART1->DR = (0x08 & 0xFF);
+	USART1->DR = (UART_BYTE_2_N64_BITS_00_CASE1 & 0xFF);
 
 	// Make sure the transmit data register is empty before sending a byte
 	while(!(USART1->SR & USART_SR_TXE)){};
 	// Send a byte (2 n64 bits)
-	USART1->DR = (0xE8 & 0xFF);
+	USART1->DR = (UART_BYTE_2_N64_BITS_01_CASE1 & 0xFF);
 
 	// Make sure the last uart byte transmission is complete before sending stop bit
 	while(!(USART1->SR & USART_SR_TC)){};
@@ -393,74 +387,79 @@ void CommsN64Console_GetContollerInputs()
 
 	// Grab states for A and B
 	while(!(USART1->SR & USART_SR_RXNE)){};
-	controllerResponse[0] = USART1->DR;
+	controllerResponse[N64_A_B] = USART1->DR;
 
 	// Grab states for Z and START
 	while(!(USART1->SR & USART_SR_RXNE)){};
-	controllerResponse[1] = USART1->DR;
+	controllerResponse[N64_Z_START] = USART1->DR;
 
 	// Grab states for DU and DD
 	while(!(USART1->SR & USART_SR_RXNE)){};
-	controllerResponse[2] = USART1->DR;
+	controllerResponse[N64_DU_DD] = USART1->DR;
 
 	// Grab states for DL and DR
 	while(!(USART1->SR & USART_SR_RXNE)){};
-	controllerResponse[3] = USART1->DR;
+	controllerResponse[N64_DL_DR] = USART1->DR;
 
 	// Grab states for RESET and RESERVED
 	while(!(USART1->SR & USART_SR_RXNE)){};
-	controllerResponse[4] = USART1->DR;
+	controllerResponse[N64_RESET_RESERVED] = USART1->DR;
 
 	// Grab states for L and R
 	while(!(USART1->SR & USART_SR_RXNE)){};
-	controllerResponse[5] = USART1->DR;
+	controllerResponse[N64_L_R] = USART1->DR;
 
 	// Grab states for CU and CD
 	while(!(USART1->SR & USART_SR_RXNE)){};
-	controllerResponse[6] = USART1->DR;
+	controllerResponse[N64_CU_CD] = USART1->DR;
 
 	// Grab states for CL and CR
 	while(!(USART1->SR & USART_SR_RXNE)){};
-	controllerResponse[7] = USART1->DR;
+	controllerResponse[N64_CL_CR] = USART1->DR;
 
 	// Grab states for X-AXIS BIT7 & BIT6
 	while(!(USART1->SR & USART_SR_RXNE)){};
-	controllerResponse[8] = USART1->DR;
+	controllerResponse[N64_X_AXIS_BIT7_BIT6] = USART1->DR;
 
 	// Grab states for X-AXIS BIT5 & BIT4
 	while(!(USART1->SR & USART_SR_RXNE)){};
-	controllerResponse[9] = USART1->DR;
+	controllerResponse[N64_X_AXIS_BIT5_BIT4] = USART1->DR;
 
 	// Grab states for X-AXIS BIT3 & BIT2
 	while(!(USART1->SR & USART_SR_RXNE)){};
-	controllerResponse[10] = USART1->DR;
+	controllerResponse[N64_X_AXIS_BIT3_BIT2] = USART1->DR;
+
 	// Grab states for X-AXIS BIT1 & BIT0
 	while(!(USART1->SR & USART_SR_RXNE)){};
-	controllerResponse[11] = USART1->DR;
+	controllerResponse[N64_X_AXIS_BIT1_BIT0] = USART1->DR;
 
 	// Grab states for Y-AXIS BIT7 & BIT6
 	while(!(USART1->SR & USART_SR_RXNE)){};
-	controllerResponse[12] = USART1->DR;
+	controllerResponse[N64_Y_AXIS_BIT7_BIT6] = USART1->DR;
 
 	// Grab states for Y-AXIS BIT5 & BIT4
 	while(!(USART1->SR & USART_SR_RXNE)){};
-	controllerResponse[13] = USART1->DR;
+	controllerResponse[N64_Y_AXIS_BIT5_BIT4] = USART1->DR;
 
 	// Grab states for Y-AXIS BIT3 & BIT2
 	while(!(USART1->SR & USART_SR_RXNE)){};
-	controllerResponse[14] = USART1->DR;
+	controllerResponse[N64_Y_AXIS_BIT3_BIT2] = USART1->DR;
 
 	// Grab states for Y-AXIS BIT1 & BIT0
 	while(!(USART1->SR & USART_SR_RXNE)){};
-	controllerResponse[15] = USART1->DR;
+	controllerResponse[N64_Y_AXIS_BIT1_BIT0] = USART1->DR;
 
 	// Disable the receiver
 	USART1->CR1 &= ~USART_CR1_RE;
 
-//	// Debuging code for logic analyzer
+	/* Debugging code for logic analyzer
+	 * To use this, simply uncomment it, hook up your n64 data
+	 * line to a logic analyzer and observe a byte sent right
+	 * after the n64 controller responds.
+	 */
 //	HAL_Delay(2);
 //	while(!(USART1->SR & USART_SR_TXE)){};
-//	USART1->DR = (controllerResponse[0] & 0xFF);
+//	USART1->DR = (<byte to send> & 0xFF);
 //	while(!(USART1->SR & USART_SR_TC)){};
 //	HAL_Delay(5);
 }
