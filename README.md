@@ -6,6 +6,9 @@ More infomration and documentation to come. But in summary, this code uses a UAR
 I had to fill some of the details in but it after a few days of wrestling with it, it does work very reliably.
 
 These docs also helped with the N64 controller protocol.
+
 https://mixdown.ca/n64dev/
+
 https://os.mbed.com/users/fomartin/notebook/n64-controller-interface/
+
 https://sites.google.com/site/consoleprotocols/home/nintendo-joy-bus-documentation/nintendo-64-experiments
