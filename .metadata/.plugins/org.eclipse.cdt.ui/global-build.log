@@ -1,13 +1,38 @@
-17:17:15 **** Incremental Build of configuration Debug for project N64_Piggy_Pad_Cable ****
+21:27:14 **** Incremental Build of configuration Debug for project N64_Piggy_Pad_Cable ****
 make -j12 all 
 arm-none-eabi-gcc "../Src/comms_n64_console.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Inc -I"C:/Users/jcorleto/Documents/Altium Docs/Piggy-Pad-Firmware-Workspace/N64_Piggy_Pad_Cable/Drivers/CMSIS/Include" -I"C:/Users/jcorleto/Documents/Altium Docs/Piggy-Pad-Firmware-Workspace/N64_Piggy_Pad_Cable/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/jcorleto/Documents/Altium Docs/Piggy-Pad-Firmware-Workspace/N64_Piggy_Pad_Cable/Drivers/STM32F4xx_HAL_Driver/Inc" -O1 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/comms_n64_console.d" -MT"Src/comms_n64_console.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/comms_n64_console.o"
-../Src/comms_n64_console.c: In function 'CommsN64Console_ParseContollerInputs':
-../Src/comms_n64_console.c:133:33: warning: 'rightBit' may be used uninitialized in this function [-Wmaybe-uninitialized]
-    controllerRegisters[0] |= (1 << rightBit);
-                              ~~~^~~~~~~~~~~~
-../Src/comms_n64_console.c:132:34: warning: 'leftBit' may be used uninitialized in this function [-Wmaybe-uninitialized]
-    controllerRegisters[0] &= ~(1 << leftBit);
-                               ~~~^~~~~~~~~~~
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Inc -I"C:/Users/jcorleto/Documents/Altium Docs/Piggy-Pad-Firmware-Workspace/N64_Piggy_Pad_Cable/Drivers/CMSIS/Include" -I"C:/Users/jcorleto/Documents/Altium Docs/Piggy-Pad-Firmware-Workspace/N64_Piggy_Pad_Cable/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/jcorleto/Documents/Altium Docs/Piggy-Pad-Firmware-Workspace/N64_Piggy_Pad_Cable/Drivers/STM32F4xx_HAL_Driver/Inc" -O1 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+../Src/main.c: In function 'SystemClock_Config':
+../Src/main.c:107:22: warning: variable 'RCC_ClkInitStruct' set but not used [-Wunused-but-set-variable]
+   RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
+                      ^~~~~~~~~~~~~~~~~
+../Src/main.c:106:22: warning: variable 'RCC_OscInitStruct' set but not used [-Wunused-but-set-variable]
+   RCC_OscInitTypeDef RCC_OscInitStruct = {0};
+                      ^~~~~~~~~~~~~~~~~
+In file included from ../Inc/main.h:7:0,
+                 from ../Src/main.c:1:
+../Src/main.c: At top level:
+../Inc/comms_n64_console.h:117:13: warning: inline function 'CommsN64Console_GetContollerInputs' declared but never defined
+ inline void CommsN64Console_GetContollerInputs(void);
+             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Inc/comms_n64_console.h:116:13: warning: inline function 'CommsN64Console_GetContollerStatus' declared but never defined
+ inline void CommsN64Console_GetContollerStatus(void);
+             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Inc/comms_n64_console.h:113:13: warning: inline function 'CommsN64Console_SendStopBit' declared but never defined
+ inline void CommsN64Console_SendStopBit(void);
+             ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from ../Src/main.c:1:0:
+../Inc/main.h:10:22: warning: 'BLUE_LED_ON' defined but not used [-Wunused-variable]
+ static GPIO_PinState BLUE_LED_ON = GPIO_PIN_RESET;
+                      ^~~~~~~~~~~
+In file included from ../Inc/main.h:7:0,
+                 from ../Src/main.c:1:
+../Inc/comms_n64_console.h:81:16: warning: 'controllerResponse' defined but not used [-Wunused-variable]
+ static uint8_t controllerResponse[MAX_CONTROLLER_RESPONSE];
+                ^~~~~~~~~~~~~~~~~~
+../Inc/comms_n64_console.h:74:27: warning: 'huart1' defined but not used [-Wunused-variable]
+ static UART_HandleTypeDef huart1;
+                           ^~~~~~
 arm-none-eabi-gcc -o "N64_Piggy_Pad_Cable.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\jcorleto\Documents\Altium Docs\Piggy-Pad-Firmware-Workspace\N64_Piggy_Pad_Cable\STM32F411CEUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="N64_Piggy_Pad_Cable.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 Finished building target: N64_Piggy_Pad_Cable.elf
  
@@ -15,10 +40,10 @@ arm-none-eabi-objdump -h -S  N64_Piggy_Pad_Cable.elf  > "N64_Piggy_Pad_Cable.lis
 arm-none-eabi-objcopy  -O binary  N64_Piggy_Pad_Cable.elf  "N64_Piggy_Pad_Cable.bin"
 arm-none-eabi-size   N64_Piggy_Pad_Cable.elf 
    text	   data	    bss	    dec	    hex	filename
-   4808	     20	   1660	   6488	   1958	N64_Piggy_Pad_Cable.elf
+   4904	     20	   1660	   6584	   19b8	N64_Piggy_Pad_Cable.elf
 Finished building: default.size.stdout
- 
 Finished building: N64_Piggy_Pad_Cable.list
 Finished building: N64_Piggy_Pad_Cable.bin
+ 
  
  

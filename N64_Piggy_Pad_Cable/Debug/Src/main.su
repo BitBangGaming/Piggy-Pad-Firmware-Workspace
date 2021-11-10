@@ -1,5 +1,5 @@
-main.c:33:6:Main_SetBlueLed	8	static
-main.c:39:6:SysTick_Handler	8	static
-main.c:45:6:Main_Init	40	static
-main.c:78:6:SystemClock_Config	16	static
+main.c:59:6:Main_SetBlueLed	8	static
+main.c:65:6:SysTick_Handler	8	static
+main.c:71:6:Main_Init	40	static
+main.c:104:6:SystemClock_Config	16	static
 main.c:3:5:main	16	static

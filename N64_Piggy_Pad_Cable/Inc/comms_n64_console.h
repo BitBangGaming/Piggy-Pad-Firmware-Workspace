@@ -100,7 +100,7 @@ static uint8_t controllerResponse[MAX_CONTROLLER_RESPONSE];
  * actual n64 data response when using a logic analyzer and is easy
  * to grab input states by bitwise manipulation.
  */
-static uint8_t controllerRegisters[MAX_CONTROLLER_REGISTER];
+uint8_t controllerRegisters[MAX_CONTROLLER_REGISTER];
 
 // Initializer
 void CommsN64Console_Init(void);
